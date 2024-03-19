@@ -1,21 +1,17 @@
 part of '../imports/data_imports.dart';
 
 abstract class HomeRemoteDataSource {
-  Future<List<BookEntity>> fetchFeaturedBooks();
+  Future<List<PlayerModel>> fetchPlayers([String? searchQuery]);
 }
 
 class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   @override
-  Future<List<BookEntity>> fetchFeaturedBooks() async {
-    // return await GenericHttp<dynamic>(Go.navigatorKey.currentState!.context)
-    //     .callApi(
-    //   name: ApiNames.apiName,
-    //   jsonBody: {},
-    //   returnType: ReturnType.Type,
-    //   methodType: MethodType.Post,
-    //   showLoader: false,
-    //   returnDataFun: (data) {},
-    // );
-    return [];
+  Future<List<PlayerModel>> fetchPlayers([String? searchQuery]) async {
+    final NetworkRequest networkRequest = NetworkRequest(
+      ApiEndpoints.players,
+      method: RequestMethod.get,
+      queryParameters: {'search': searchQuery},
+    );
+    return ConstantManager.GET_IT_LOCATOR<NetworkService>().callApi(networkRequest);
   }
 }
