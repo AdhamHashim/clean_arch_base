@@ -1,16 +1,31 @@
-part of'../imports/presentaion_imports.dart';
+part of '../imports/presentaion_imports.dart';
 
-abstract class HomeState extends Equatable {
-  const HomeState();
+final class HomeState extends Equatable {
+  final BaseState baseState;
+  final List<PlayerEntity> players;
+  final String errorMessage;
+
+  const HomeState({required this.baseState, required this.players, this.errorMessage = ''});
+
+  factory HomeState.initial() {
+    return const HomeState(
+      baseState: BaseState.initial,
+      players: [],
+    );
+  }
+
+  HomeState copyWith({
+    BaseState? baseState,
+    List<PlayerEntity>? players,
+    String? errorMessage,
+  }) {
+    return HomeState(
+      baseState: baseState ?? this.baseState,
+      players: players ?? this.players,
+      errorMessage: errorMessage ?? this.errorMessage,
+    );
+  }
+
   @override
   List<Object> get props => [];
 }
-
-class HomeInitial extends HomeState {}
-class HomeSuccess extends HomeState {}
-class failure extends HomeState {}
-class intrent extends HomeState {}
-class serverException extends HomeState {}
-class emptyData extends HomeState {}
-
-
