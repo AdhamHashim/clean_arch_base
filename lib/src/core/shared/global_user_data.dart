@@ -1,0 +1,58 @@
+import 'package:flutter_base/src/core/helpers/cache_service.dart';
+
+class GlobalUserData {
+  String? token;
+  String? deviceToken;
+  // UserModel? _userModel;
+
+  GlobalUserData._internal();
+  static GlobalUserData? _instance;
+
+  factory GlobalUserData() {
+    _instance ??= GlobalUserData._internal();
+    return _instance!;
+  }
+
+  void init({required String token, String? deviceToken}) {
+    this.token = token;
+    this.deviceToken = deviceToken;
+  }
+
+  set setDeviceToken(String deviceToken) {
+    this.deviceToken = deviceToken;
+  }
+
+  set setToken(String token) {
+    this.token = token;
+  }
+
+  Future<bool> get isUserLoggedIn async {
+    final String? token = await SecureStorage.read('token');
+    return token != null && token.isNotEmpty;
+  }
+
+  String get getToken {
+    if (token != null) {
+      return token!;
+    } else {
+      throw Exception('Token is undefined, make sure to assign value to it');
+    }
+  }
+
+  String get getDeviceToken {
+    if (deviceToken != null) {
+      return deviceToken!;
+    } else {
+      throw Exception(
+          'Device token is undefined, make sure to assign value to it');
+    }
+  }
+
+  // UserModel get getUserModel {
+  //   return _userModel!;
+  // }
+
+  // String get currentLocale {
+  //   return 'en';
+  // }
+}
