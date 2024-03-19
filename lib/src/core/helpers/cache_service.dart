@@ -7,6 +7,7 @@ class CacheStorage {
   static Future<void> init() async {
     _sharedPrefrences = await SharedPreferences.getInstance();
   }
+
   static void write(String key, dynamic value) {
     if (value is String) {
       _sharedPrefrences.setString(key, value);
@@ -26,9 +27,9 @@ class CacheStorage {
   }
 }
 
-
 class SecureStorage {
-  static const _storage =  FlutterSecureStorage();
+  SecureStorage._();
+  static const _storage = FlutterSecureStorage();
 
   static Future<void> write(String key, String value) async {
     await _storage.write(key: key, value: value);

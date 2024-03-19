@@ -73,6 +73,15 @@ class Helpers {
     return image;
   }
 
+  static void shareApp(url) {
+    CustomLoading.showLoadingDialog();
+    Share.share(url).whenComplete(() {
+      CustomLoading.dismissLoading();
+    });
+  } 
+}
+
+class LauncherHelper {
   static void launchURL({required String url}) async {
     if (!url.toString().startsWith("https")) {
       url = "https://$url";
@@ -217,12 +226,5 @@ class Helpers {
 
   static void sendMail(mail) async {
     await launchUrl(Uri.parse('mailto:$mail'));
-  }
-
-  static void shareApp(url) {
-    CustomLoading.showLoadingDialog();
-    Share.share(url).whenComplete(() {
-      CustomLoading.dismissLoading();
-    });
   }
 }
