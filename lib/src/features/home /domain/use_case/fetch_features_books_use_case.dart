@@ -1,11 +1,12 @@
 part of '../imports/domain_imports.dart';
 
-class FetchFeaturedBooksUseCase extends UseCase<List<BookEntity>, void> {
-  final HomeRepo homeRepo;
-  FetchFeaturedBooksUseCase(this.homeRepo);
+class FetchFeaturedBooksUseCase extends UseCase<List<PlayerEntity>,String> {
+  final HomeRepository homeRepo;
+  FetchFeaturedBooksUseCase({required this.homeRepo});
 
   @override
-  Future<Result<List<BookEntity>, Failure>> call([void param]) {
-    return homeRepo.fetchFeaturedBooks();
+  Future<Result<List<PlayerEntity>, Failure>> call(
+      [String? param]) {
+    return homeRepo.fetchPlayers(param);
   }
 }

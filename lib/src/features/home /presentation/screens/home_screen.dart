@@ -7,8 +7,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => HomeCubit(
-        ConstantManager.GET_IT_LOCATOR.get<FetchFeaturedBooksUseCase>(),
-      )..fetchFeaturedBooks(),
+        ConstantManager.GET_IT_LOCATOR<FetchFeaturedBooksUseCase>(),
+      )..fetchPlayers(),
       child: const _HomeView(),
     );
   }
@@ -19,9 +19,17 @@ class _HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Home Screen'),
+    return Scaffold(
+      body: BlocBuilder<HomeCubit, HomeState>(
+        builder: (context, state) {
+          return switch (state.baseState) {
+            BaseState.initial ||
+            BaseState.loading =>
+              CustomLoading.showLoadingView(),
+            BaseState.error => Center(child: Text(state.errorMessage)),
+            BaseState.success => PlayerList(players: state.players)
+          };
+        },
       ),
     );
   }
