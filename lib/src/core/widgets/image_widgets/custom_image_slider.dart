@@ -1,9 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base/src/config/res/app_sizes.dart';
+import 'package:flutter_base/src/config/res/constans_manager.dart';
+import 'package:flutter_base/src/core/extensions/context_extension.dart';
 import 'package:flutter_base/src/core/extensions/padding_extension.dart';
 import 'package:flutter_base/src/core/extensions/sized_box_helper.dart';
-import 'package:flutter_base/src/core/res/color_manager.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_base/src/config/res/color_manager.dart';
 
 import '../image_widgets/cached_image.dart';
 
@@ -12,12 +14,13 @@ class ImageSlider extends StatefulWidget {
   final Color? inActiveColor;
   final List<String> images;
   final double? height;
-  const ImageSlider(
-      {super.key,
-      required this.images,
-      this.activeColor,
-      this.inActiveColor,
-      this.height});
+  const ImageSlider({
+    super.key,
+    required this.images,
+    this.activeColor,
+    this.inActiveColor,
+    this.height,
+  });
 
   @override
   State<ImageSlider> createState() => _ImageSliderState();
@@ -35,16 +38,16 @@ class _ImageSliderState extends State<ImageSlider> {
           itemBuilder:
               (BuildContext context, int itemIndex, int pageViewIndex) {
             return CachedImage(
-              width: 1.sw,
-              borderRadius: BorderRadius.circular(16),
+              width: AppSize.sW2,
+              borderRadius: BorderRadius.circular(AppCircular.r12),
               url: widget.images[itemIndex],
-            ).paddingSymmetric(horizontal: 16.w);
+            ).paddingSymmetric(horizontal: AppPadding.pW16);
           },
           options: CarouselOptions(
-            height: widget.height ?? 200.h,
-            aspectRatio: 16 / 9,
+            height: widget.height ?? context.mediaQuery.size.width * .2,
+            aspectRatio: ConstantManager.CUSTOM_IMAGE_SLIDER_ASPECT_RATIO,
             viewportFraction: 1,
-            initialPage: 0,
+            initialPage: ConstantManager.ZERO,
             enableInfiniteScroll: true,
             reverse: false,
             autoPlay: true,
@@ -68,13 +71,13 @@ class _ImageSliderState extends State<ImageSlider> {
                 final isActive = index == value;
                 return AnimatedContainer(
                   duration: const Duration(milliseconds: 300),
-                  width: isActive ? 25.w : 8.w,
-                  height: 8.h,
-                  margin: EdgeInsets.symmetric(horizontal: 2.w),
+                  width: isActive ? AppSize.sW25 : AppSize.sW8,
+                  height: AppSize.sH10,
+                  margin: EdgeInsets.symmetric(horizontal: AppMargin.mW2),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
+                    borderRadius: BorderRadius.circular(AppCircular.r5),
                     color: isActive
-                        ? widget.activeColor ?? ColorManager.primary
+                        ? widget.activeColor ?? ColorManager.primaryColor
                         : widget.inActiveColor ?? Colors.grey,
                   ),
                 );

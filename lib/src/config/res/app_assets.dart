@@ -10,10 +10,10 @@ class AssetsManager {
 
 class LottieManager {
   static const String _lottiePath = 'assets/lottie/';
-  static const String splashLottie = '${_lottiePath}splash_lottie.json';
-}
-
-class FontManager {
-  // ignore: unused_field
-  static const String _fontPath = 'assets/fonts/';
+  static const String noInternet = "$_lottiePath/no_internet.json";
+  static const String error = "$_lottiePath/error.json";
+  static const String noData = "$_lottiePath/no_data.json";
+  static const String done = "$_lottiePath/done.json";
+  static const String packageEmpty = "$_lottiePath/package_empty.json";
+  static const String sucess = "$_lottiePath/a.json";
 }

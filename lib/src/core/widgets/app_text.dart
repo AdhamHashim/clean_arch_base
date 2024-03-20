@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_base/src/config/res/app_sizes.dart';
 
 class AppText extends StatelessWidget {
   final String text;
   final Color? color;
-  final double fontSize;
+  final double? fontSize;
   final FontWeight fontWeight;
   final TextAlign textAlign;
   final TextOverflow? overflow;
@@ -14,7 +14,7 @@ class AppText extends StatelessWidget {
     this.text, {
     super.key,
     this.color,
-    this.fontSize = 16,
+    this.fontSize,
     this.fontWeight = FontWeight.normal,
     this.overflow,
     this.textAlign = TextAlign.start,
@@ -31,7 +31,7 @@ class AppText extends StatelessWidget {
       maxLines: maxLines,
       style: TextStyle(
         color: color,
-        fontSize: fontSize.sp,
+        fontSize: fontSize ?? FontSize.s16,
         fontWeight: fontWeight,
         height: height,
       ),

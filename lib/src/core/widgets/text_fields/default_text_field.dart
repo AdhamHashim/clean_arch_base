@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_base/src/config/res/app_sizes.dart';
+import 'package:flutter_base/src/config/res/constans_manager.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-import '../../res/color_manager.dart';
+import '../../../config/res/color_manager.dart';
 
 class DefaultTextField extends StatefulWidget {
   final String? title;
@@ -19,8 +21,7 @@ class DefaultTextField extends StatefulWidget {
   final bool filled;
   final int? maxLength;
   final TextAlign? textAlign;
-  final num height;
-  final num width;
+
   final GestureTapCallback? onTap;
   final String? suffixText;
   final TextInputAction action;
@@ -29,8 +30,6 @@ class DefaultTextField extends StatefulWidget {
   final Widget? prefixWidget;
   final List<TextInputFormatter>? inputFormatters;
   final Widget? suffixIcon;
-  final Widget? suffixWidget;
-  final VoidCallback? onPressSuffixIcon;
   final bool? isPassword;
   final int? maxLines;
   final bool? hasBorderColor;
@@ -53,7 +52,6 @@ class DefaultTextField extends StatefulWidget {
     required this.name,
     this.label,
     this.onSubmitted,
-    this.suffixWidget,
     this.isPassword = false,
     this.fillColor,
     this.inputFormatters,
@@ -63,14 +61,11 @@ class DefaultTextField extends StatefulWidget {
     this.filled = true,
     this.readOnly = false,
     this.textAlign = TextAlign.start,
-    this.height = 10,
-    this.width = 10,
     this.action = TextInputAction.next,
     this.focusNode,
     this.autoFocus = false,
     this.suffixText,
     this.suffixIcon,
-    this.onPressSuffixIcon,
     this.maxLines,
     this.onChanged,
     this.style,
@@ -122,14 +117,14 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
       autocorrect: false,
       autofocus: widget.autoFocus,
       focusNode: widget.autoFocus == true ? widget.focusNode : null,
-      cursorColor: ColorManager.primary,
+      cursorColor: ColorManager.primaryColor,
       decoration: InputDecoration(
         isDense: true,
-        counterText: '',
+        counterText: ConstantManager.EMPTY_TEXT,
         filled: widget.filled,
         suffixText: widget.suffixText,
         prefixIcon: widget.isPassword == true
-            ? Icon(Icons.lock_outline, color: ColorManager.greyHintText)
+            ? const Icon(Icons.lock_outline, color: ColorManager.hintTextColor)
             : widget.prefixIcon,
         suffixIcon: widget.isPassword == true
             ? IconButton(
@@ -142,7 +137,7 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
                   _isSecure
                       ? Icons.visibility_off_outlined
                       : Icons.visibility_outlined,
-                  color: ColorManager.greyHintText,
+                  color: ColorManager.hintTextColor,
                 ),
               )
             : widget.suffixIcon,
@@ -150,26 +145,31 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
         fillColor: widget.fillColor ?? Colors.white,
         hintText: widget.title,
         label: isLabel ? Text(widget.label!) : null,
-        labelStyle: isLabel ? TextStyle(color: ColorManager.greyLightText) : null,
-        hintStyle: TextStyle(
-            color: ColorManager.greyHintText, fontWeight: FontWeight.w300),
+        labelStyle:
+            isLabel ? const TextStyle(color: ColorManager.primaryColor) : null,
+        hintStyle: const TextStyle(
+          color: ColorManager.primaryColor,
+          fontWeight: FontWeight.w300,
+        ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(AppCircular.r10),
           borderSide: widget.hasBorderColor == true
-              ? BorderSide(color: widget.borderColor ?? ColorManager.dark1)
+              ? BorderSide(
+                  color: widget.borderColor ?? ColorManager.borderColor,
+                )
               : BorderSide.none,
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: ColorManager.primary),
+          borderRadius: BorderRadius.circular(AppCircular.r10),
+          borderSide: const BorderSide(color: ColorManager.borderColor),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: ColorManager.red),
+          borderRadius: BorderRadius.circular(AppCircular.r10),
+          borderSide: const BorderSide(color: ColorManager.borderColor),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: ColorManager.red),
+          borderRadius: BorderRadius.circular(AppCircular.r10),
+          borderSide: const BorderSide(color: ColorManager.borderColor),
         ),
       ),
     );

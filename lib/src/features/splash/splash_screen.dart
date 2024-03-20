@@ -1,4 +1,4 @@
-import 'package:flutter_base/src/core/res/app_assets.dart';
+import 'package:flutter_base/src/config/res/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:svg_flutter/svg.dart';

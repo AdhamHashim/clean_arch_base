@@ -1,6 +1,5 @@
 import 'package:multiple_result/multiple_result.dart';
-import '../error/failure_entity.dart';
-
+ 
 abstract class UseCase<Type, Param> {
   Future<Result<Type, Failure>> call([Param param]);
   // i use [] to make param optional

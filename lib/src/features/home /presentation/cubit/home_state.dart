@@ -7,10 +7,5 @@ abstract class HomeState extends Equatable {
 }
 
 class HomeInitial extends HomeState {}
-class HomeSuccess extends HomeState {}
-class failure extends HomeState {}
-class intrent extends HomeState {}
-class serverException extends HomeState {}
-class emptyData extends HomeState {}
 
 

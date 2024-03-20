@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_base/src/core/res/color_manager.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:svg_flutter/svg_flutter.dart';
+// ignore_for_file: deprecated_member_use
 
+import 'package:flutter/material.dart';
+import 'package:flutter_base/src/config/res/app_sizes.dart';
+import 'package:flutter_base/src/config/res/color_manager.dart';
+import 'package:svg_flutter/svg_flutter.dart';
 
 class CustomAvatar extends StatelessWidget {
   final String icon;
@@ -27,16 +28,13 @@ class CustomAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: color ?? ColorManager.greyBackground,
-          borderRadius: BorderRadius.circular(radius ?? 8.r)),
+        color: color ?? ColorManager.scaffoldBackground,
+        borderRadius: BorderRadius.circular(radius ?? AppCircular.r8),
+      ),
       child: Padding(
-        padding: padding ?? EdgeInsets.symmetric(
-          horizontal: 8.0.w,
-          vertical: 8.0.h,
-        ),
+        padding: padding ?? EdgeInsets.all(AppPadding.pH8),
         child: SvgPicture.asset(
           icon,
-          // ignore: deprecated_member_use
           color: iconColor,
           height: height,
           width: width,

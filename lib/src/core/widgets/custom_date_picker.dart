@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 
 import '../../config/language/languages.dart';
 import '../navigation/navigator.dart';
-import '../res/color_manager.dart';
+import '../../config/res/color_manager.dart';
 
 Future<DateTime?> showCustomDatePicker(
     {required TextEditingController controller, String? dateFormat}) async {
@@ -18,13 +18,13 @@ Future<DateTime?> showCustomDatePicker(
     builder: (context, child) {
       return Theme(
         data: Theme.of(context).copyWith(
-          colorScheme: ColorScheme.light(
-              primary: ColorManager.primary, // <-- SEE HERE
-              onPrimary: ColorManager.white, // <-- SEE HERE
-              onSurface: ColorManager.primary),
+          colorScheme: const ColorScheme.light(
+              primary: ColorManager.primaryColor, // <-- SEE HERE
+              onPrimary: ColorManager.whiteColor, // <-- SEE HERE
+              onSurface: ColorManager.primaryColor,),
           textButtonTheme: TextButtonThemeData(
             style: TextButton.styleFrom(
-              foregroundColor: ColorManager.primary, // button text color
+              foregroundColor: ColorManager.primaryColor, // button text color
             ),
           ),
         ),

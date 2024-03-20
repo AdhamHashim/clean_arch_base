@@ -11,7 +11,7 @@
 1. USER
 
 
-**FLUTTER_VERSION** : 3.13.5
+**FLUTTER_VERSION** : 3.19.2
 
 ## Links for development :
 
@@ -68,3 +68,9 @@
 ## Image :
 
 ![Logo](assets/images/appIcon.png)
+
+
+## EASY_LOCALIZATION_GENERATOR:
+flutter pub run easy_localization:generate -O lib/src//config/language -f keys -o locale_keys.g.dart --source-dir ./assets/translations
+
+

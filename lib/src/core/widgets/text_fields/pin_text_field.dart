@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_base/src/config/res/app_sizes.dart';
+import 'package:flutter_base/src/config/res/constans_manager.dart';
 import 'package:flutter_base/src/core/extensions/sized_box_helper.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pinput/pinput.dart';
-
-import '../../res/color_manager.dart';
+import '../../../config/res/color_manager.dart';
 
 class CustomPinTextField extends StatelessWidget {
   final ValueChanged<String>? onCompleted;
@@ -15,21 +15,22 @@ class CustomPinTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final defaultPinTheme = PinTheme(
-        width: 52.w,
-        height: 74.h,
-        decoration: BoxDecoration(
-          color: Colors.grey[200],
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Colors.grey[400]!),
-        ));
+      width: AppSize.sW50,
+      height: AppSize.sH60,
+      decoration: BoxDecoration(
+        color: Colors.grey[200],
+        borderRadius: BorderRadius.circular(AppCircular.r10),
+        border: Border.all(color: Colors.grey[400]!),
+      ),
+    );
     final focusedPinTheme = defaultPinTheme.copyDecorationWith(
-      border: Border.all(color: ColorManager.primary),
+      border: Border.all(color: ColorManager.primaryColor),
     );
     final errorPinTheme = defaultPinTheme.copyDecorationWith(
-      border: Border.all(color: Colors.red),
+      border: Border.all(color: ColorManager.errorColor),
     );
     return Pinput(
-      length: 4,
+      length: ConstantManager.PIN_CODE_FIELDS_COUNT,
       keyboardType: TextInputType.number,
       inputFormatters: [
         FilteringTextInputFormatter.digitsOnly,
