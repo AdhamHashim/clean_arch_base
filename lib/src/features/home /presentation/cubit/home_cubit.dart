@@ -7,8 +7,18 @@ class HomeCubit extends Cubit<HomeState> {
   void fetchPlayers([String? searchQuery]) async {
     final result = await homeFeaturedBooksUseCase.call(searchQuery);
     result.when(
-        (players) => emit(
-            state.copyWith(baseState: BaseState.success, players: players)),
-        (error) => emit(state.copyWith(baseState: BaseState.error, errorMessage: error.message)));
+      (players) => emit(
+        state.copyWith(
+          baseState: BaseState.success,
+          players: players,
+        ),
+      ),
+      (error) => emit(
+        state.copyWith(
+          baseState: BaseState.error,
+          errorMessage: error.message,
+        ),
+      ),
+    );
   }
 }

@@ -8,10 +8,11 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   @override
   Future<List<PlayerModel>> fetchPlayers([String? searchQuery]) async {
     final NetworkRequest networkRequest = NetworkRequest(
-      ApiEndpoints.players,
+      path: ApiEndpoints.players,
       method: RequestMethod.get,
       queryParameters: {'search': searchQuery},
     );
-    return ConstantManager.GET_IT_LOCATOR<NetworkService>().callApi(networkRequest);
+    return ConstantManager.GET_IT_LOCATOR<NetworkService>()
+        .callApi(networkRequest);
   }
 }
