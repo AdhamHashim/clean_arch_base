@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base/src/config/res/app_assets.dart';
-import 'package:flutter_base/src/config/res/app_strings.dart';
-import 'package:lottie/lottie.dart';
+ import 'package:lottie/lottie.dart';
 
+import '../../config/language/locale_keys.g.dart';
 import '../../config/res/app_sizes.dart';
 import '../../config/res/color_manager.dart';
 import 'buttons/default_button.dart';
@@ -26,12 +26,12 @@ class ExceptionView extends StatelessWidget {
           Container(
             margin: EdgeInsets.symmetric(vertical: AppMargin.mH20),
             child: Center(
-              child: Text(AppString.expetion.tr()),
+              child: Text(LocaleKeys.expetion.tr()),
             ),
           ),
           DefaultButton(
             width: MediaQuery.of(context).size.width * .45,
-            title: AppString.contactUs.tr(),
+            title: LocaleKeys.contact_us.tr(),
             textColor: ColorManager.buttonTextColor,
             fontSize: FontSize.s12,
             onTap: () {},

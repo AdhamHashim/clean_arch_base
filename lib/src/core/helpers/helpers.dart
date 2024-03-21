@@ -3,13 +3,13 @@ import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base/src/config/res/app_sizes.dart';
-import 'package:flutter_base/src/config/res/app_strings.dart';
 import 'package:flutter_base/src/core/extensions/padding_extension.dart';
 import 'package:flutter_base/src/core/widgets/custom_loading.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../config/language/locale_keys.g.dart';
 import '../navigation/navigator.dart';
 
 class Helpers {
@@ -45,7 +45,7 @@ class Helpers {
               children: <Widget>[
                 ListTile(
                   leading: const Icon(Icons.photo_library),
-                  title: const Text(AppString.gallary),
+                  title: Text(LocaleKeys.PhotoLibrary.tr()),
                   onTap: () async {
                     final currentImage =
                         await picker.pickImage(source: ImageSource.gallery);
@@ -57,7 +57,7 @@ class Helpers {
                 ),
                 ListTile(
                   leading: const Icon(Icons.photo_camera),
-                  title: const Text(AppString.camera),
+                  title: Text(LocaleKeys.Camera.tr()),
                   onTap: () async {
                     final currentImage =
                         await picker.pickImage(source: ImageSource.camera);
@@ -79,7 +79,7 @@ class Helpers {
     Share.share(url).whenComplete(() {
       CustomLoading.dismissLoading();
     });
-  } 
+  }
 }
 
 class LauncherHelper {
@@ -100,7 +100,7 @@ class LauncherHelper {
     if (await canLaunchUrl(Uri.parse(whatsAppUrl))) {
       await launchUrl(Uri.parse(whatsAppUrl));
     } else {
-      throw AppString.error.tr();
+      throw LocaleKeys.error.tr();
     }
   }
 

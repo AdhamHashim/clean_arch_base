@@ -22,6 +22,9 @@
   "PhotoLibrary":"Gallary",
   "Camera":"Camera",
   "error":"Some Thing went wrong",
+  "bad_request": "An error occurred, please check the application administration",
+  "unauthorized":" Please re-register again to confirm the validity of the data",
+  "notFound": "Data not found",
 
   "--------------------------------------- Add App Strings Here -------------------------------------------":"",
 

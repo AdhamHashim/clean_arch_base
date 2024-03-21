@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base/src/config/res/app_assets.dart';
-import 'package:flutter_base/src/config/res/app_strings.dart';
-import 'package:lottie/lottie.dart';
+ import 'package:lottie/lottie.dart';
+import '../../config/language/locale_keys.g.dart';
 import '../../config/res/app_sizes.dart';
 
 class InternetExpetion extends StatelessWidget {
@@ -20,9 +20,9 @@ class InternetExpetion extends StatelessWidget {
           height: MediaQuery.of(context).size.height * .3,
         ),
         SizedBox(height: AppSize.sH10),
-        Text(AppString.errorExeptionNoconnection.tr()),
+        Text(LocaleKeys.errorExeptionNoconnection.tr()),
         SizedBox(height: AppSize.sH10),
-        Text(AppString.errorExeptionNotContainDesc.tr()),
+        Text(LocaleKeys.errorExeption_NointernetDesc.tr()),
         SizedBox(height: AppSize.sH10),
       ],
     );

@@ -3,11 +3,11 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_base/src/config/res/app_strings.dart';
 import 'package:flutter_base/src/config/res/constans_manager.dart';
 import 'package:flutter_base/src/core/network/extensions.dart';
 
 import '../../config/language/languages.dart';
+import '../../config/language/locale_keys.g.dart';
 import '../../config/res/status_code.dart';
 import '../error/exceptions.dart';
 import '../shared/global_user_data.dart';
@@ -90,43 +90,43 @@ class DioService implements NetworkService {
   dynamic _handleError(DioException error) {
     switch (error.type) {
       case DioExceptionType.connectionTimeout:
-        throw SocketException(AppString.checkInternet.tr());
+        throw SocketException(LocaleKeys.checkInternet.tr());
       case DioExceptionType.sendTimeout:
-        throw SocketException(AppString.checkInternet.tr());
+        throw SocketException(LocaleKeys.checkInternet.tr());
       case DioExceptionType.receiveTimeout:
-        throw SocketException(AppString.checkInternet.tr());
+        throw SocketException(LocaleKeys.checkInternet.tr());
       case DioExceptionType.badResponse:
         switch (error.response!.statusCode) {
           case StatusCode.badRequest:
             throw BadRequestException(
-              error.response?.data['message'] ?? AppString.badRequest.tr(),
+              error.response?.data['message'] ?? LocaleKeys.bad_request.tr(),
             );
           case StatusCode.unauthorized:
             throw UnauthorizedException(
-              error.response?.data['message'] ?? AppString.unauthorized.tr(),
+              error.response?.data['message'] ?? LocaleKeys.unauthorized.tr(),
             );
           case StatusCode.notFound:
-            throw NotFoundException(AppString.notFound.tr());
+            throw NotFoundException(LocaleKeys.notFound.tr());
           case StatusCode.conflict:
             throw ConflictException(
-              error.response?.data['message'] ?? AppString.serverError.tr(),
+              error.response?.data['message'] ?? LocaleKeys.serverError.tr(),
             );
           case StatusCode.internalServerError:
             throw InternalServerErrorException(
-              error.response?.data['message'] ?? AppString.serverError.tr(),
+              error.response?.data['message'] ?? LocaleKeys.serverError.tr(),
             );
           default:
-            throw ServerException(AppString.serverError.tr());
+            throw ServerException(LocaleKeys.serverError.tr());
         }
       case DioExceptionType.cancel:
-        throw ServerException(AppString.intenetWeaness.tr());
+        throw ServerException(LocaleKeys.intenetWeaness.tr());
       case DioExceptionType.unknown:
         throw ServerException(
-          error.response?.data['message'] ?? AppString.error.tr(),
+          error.response?.data['message'] ?? LocaleKeys.error.tr(),
         );
       default:
         throw ServerException(
-          error.response?.data['message'] ?? AppString.error.tr(),
+          error.response?.data['message'] ?? LocaleKeys.error.tr(),
         );
     }
   }
