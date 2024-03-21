@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base/src/features/home%20/presentation/imports/presentaion_imports.dart';
 
 import 'named_routes.dart';
 import 'page_router/imports_page_router_builder.dart';
@@ -13,7 +14,7 @@ class RouterGenerator {
         NamedRoutes.values.firstWhere((e) => e.routeName == settings.name);
     return switch (namedRoute) {
       NamedRoutes.splash => _pageRouter.build(
-          const Scaffold(),
+          const HomeScreen(),
           settings: settings,
         ),
     };

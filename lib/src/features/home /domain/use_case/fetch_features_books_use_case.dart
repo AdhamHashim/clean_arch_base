@@ -8,5 +8,6 @@ class FetchFeaturedBooksUseCase extends UseCase<List<PlayerEntity>,String> {
   Future<Result<List<PlayerEntity>, Failure>> call(
       [String? param]) {
     return homeRepo.fetchPlayers(param);
+    
   }
 }

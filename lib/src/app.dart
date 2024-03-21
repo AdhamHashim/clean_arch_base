@@ -6,6 +6,7 @@ import 'package:flutter_base/src/core/widgets/offline_widget.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'config/themes/app_theme.dart';
+import 'core/navigation/named_routes.dart';
 import 'core/navigation/navigator.dart';
 import 'core/navigation/route_generator.dart';
 import 'core/shared/route_observer.dart';
@@ -21,15 +22,16 @@ class App extends StatelessWidget {
       splitScreenMode: true,
       builder: (ctx, child) {
         return MaterialApp(
+          debugShowCheckedModeBanner: false,
           title: ConstantManager.PROJECT_NAME,
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,
           locale: context.locale,
-          theme: AppTheme.light,
-          onGenerateRoute: RouterGenerator.getRoute,
-          debugShowCheckedModeBanner: false,
-          navigatorObservers: [AppNavigationObserver()],
           navigatorKey: Go.navigatorKey,
+          onGenerateRoute: RouterGenerator.getRoute,
+          initialRoute: NamedRoutes.splash.routeName,
+          navigatorObservers: [AppNavigationObserver()],
+          theme: AppTheme.light,
           builder: (context, child) {
             return OfflineWidget(
               child: FlutterEasyLoading(child: child!),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base/src/core/extensions/material_color_extension.dart';
 import 'package:flutter_base/src/config/res/app_sizes.dart';
-import 'package:flutter_base/src/core/navigation/navigator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../res/color_manager.dart';
 
@@ -47,34 +46,34 @@ class AppTheme {
         prefixIconColor: ColorManager.borderColor,
       ),
       textTheme: GoogleFonts.poppinsTextTheme(
-        Theme.of(Go.navigatorKey.currentContext!).textTheme.copyWith(
-              // This Style For AppBar Text
-              headlineLarge: TextStyle(
-                fontSize: FontSize.s18,
-                color: ColorManager.secondryColor,
-                fontWeight: FontWeightManager.medium,
-              ),
-              // This Style For Normal Text With PrimaryColor
-              titleLarge: TextStyle(
-                fontSize: FontSize.s13,
-                color: ColorManager.primaryColor,
-              ),
-              // This Style For Normal Text With SecondryColor
-              titleMedium: TextStyle(
-                fontSize: FontSize.s13,
-                color: ColorManager.primaryColor,
-              ),
-              // This Style For Normal Text With ThirdColor
-              titleSmall: TextStyle(
-                fontSize: FontSize.s13,
-                color: ColorManager.primaryColor,
-              ),
-              // This Style For Hint Text
-              bodySmall: TextStyle(
-                fontSize: FontSize.s8,
-                color: ColorManager.hintTextColor,
-              ),
-            ),
+        TextTheme(
+          // This Style For AppBar Text
+          headlineLarge: TextStyle(
+            fontSize: FontSize.s18,
+            color: ColorManager.secondryColor,
+            fontWeight: FontWeightManager.medium,
+          ),
+          // This Style For Normal Text With PrimaryColor
+          titleLarge: TextStyle(
+            fontSize: FontSize.s13,
+            color: ColorManager.primaryColor,
+          ),
+          // This Style For Normal Text With SecondryColor
+          titleMedium: TextStyle(
+            fontSize: FontSize.s13,
+            color: ColorManager.primaryColor,
+          ),
+          // This Style For Normal Text With ThirdColor
+          titleSmall: TextStyle(
+            fontSize: FontSize.s13,
+            color: ColorManager.primaryColor,
+          ),
+          // This Style For Hint Text
+          bodySmall: TextStyle(
+            fontSize: FontSize.s8,
+            color: ColorManager.hintTextColor,
+          ),
+        ),
       ),
     );
   }
@@ -121,34 +120,34 @@ class AppTheme {
         prefixIconColor: ColorManagerWithDarkMode.borderColor,
       ),
       textTheme: GoogleFonts.poppinsTextTheme(
-        Theme.of(Go.navigatorKey.currentContext!).textTheme.copyWith(
-              // This Style For AppBar Text
-              headlineLarge: TextStyle(
-                fontSize: FontSize.s18,
-                color: ColorManager.secondryColor,
-                fontWeight: FontWeightManager.medium,
-              ),
-              // This Style For Normal Text With PrimaryColor
-              titleLarge: TextStyle(
-                fontSize: FontSize.s13,
-                color: ColorManager.primaryColor,
-              ),
-              // This Style For Normal Text With SecondryColor
-              titleMedium: TextStyle(
-                fontSize: FontSize.s13,
-                color: ColorManager.primaryColor,
-              ),
-              // This Style For Normal Text With ThirdColor
-              titleSmall: TextStyle(
-                fontSize: FontSize.s13,
-                color: ColorManager.primaryColor,
-              ),
-              // This Style For Hint Text
-              bodySmall: TextStyle(
-                fontSize: FontSize.s8,
-                color: ColorManager.hintTextColor,
-              ),
-            ),
+        TextTheme(
+          // This Style For AppBar Text
+          headlineLarge: TextStyle(
+            fontSize: FontSize.s18,
+            color: ColorManager.secondryColor,
+            fontWeight: FontWeightManager.medium,
+          ),
+          // This Style For Normal Text With PrimaryColor
+          titleLarge: TextStyle(
+            fontSize: FontSize.s13,
+            color: ColorManager.primaryColor,
+          ),
+          // This Style For Normal Text With SecondryColor
+          titleMedium: TextStyle(
+            fontSize: FontSize.s13,
+            color: ColorManager.primaryColor,
+          ),
+          // This Style For Normal Text With ThirdColor
+          titleSmall: TextStyle(
+            fontSize: FontSize.s13,
+            color: ColorManager.primaryColor,
+          ),
+          // This Style For Hint Text
+          bodySmall: TextStyle(
+            fontSize: FontSize.s8,
+            color: ColorManager.hintTextColor,
+          ),
+        ),
       ),
     );
   }

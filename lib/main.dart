@@ -5,7 +5,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'src/app.dart';
 import 'src/core/navigation/Constants/imports_constants.dart';
 import 'src/core/navigation/page_router/implementation/imports_page_router.dart';

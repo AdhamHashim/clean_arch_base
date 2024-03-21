@@ -1,9 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_base/src/features/home%20/domain/imports/domain_imports.dart';
+part of'../imports/presentaion_imports.dart';
 
-class PlayerList extends StatelessWidget {
+class _BuildPlayerList extends StatelessWidget {
   final List<PlayerEntity> players;
-  const PlayerList({super.key,required this.players});
+  const _BuildPlayerList({Key? key, required this.players}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

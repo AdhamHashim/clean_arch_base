@@ -19,18 +19,9 @@ class _HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: BlocBuilder<HomeCubit, HomeState>(
-        builder: (context, state) {
-          return switch (state.baseState) {
-            BaseState.initial ||
-            BaseState.loading =>
-              CustomLoading.showLoadingView(),
-            BaseState.error => Center(child: Text(state.errorMessage)),
-            BaseState.success => PlayerList(players: state.players)
-          };
-        },
-      ),
+    return const Scaffold(
+      backgroundColor: ColorManager.scaffoldBackground,
+      body: HomeBody(),
     );
   }
 }
