@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base/src/config/res/app_sizes.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-import '../../res/color_manager.dart';
-
+import '../../../config/res/color_manager.dart';
 
 class CachedImage extends StatelessWidget {
   final String url;
@@ -42,10 +42,10 @@ class CachedImage extends StatelessWidget {
       imageUrl: url,
       width: width,
       height: height,
-      memCacheHeight: (height ?? 40 * devicePixelRatio).round(),
-      memCacheWidth: (width ?? 40 * devicePixelRatio).round(),
-      maxHeightDiskCache: (height ?? 40 * devicePixelRatio).round(),
-      maxWidthDiskCache: (width ?? 40 * devicePixelRatio).round(),
+      memCacheHeight: (height ?? AppSize.sH40 * devicePixelRatio).round(),
+      memCacheWidth: (width ?? AppSize.sW40 * devicePixelRatio).round(),
+      maxHeightDiskCache: (height ?? AppSize.sH40 * devicePixelRatio).round(),
+      maxWidthDiskCache: (width ?? AppSize.sW40 * devicePixelRatio).round(),
       imageBuilder: (context, imageProvider) => Container(
         width: width,
         height: height,
@@ -54,12 +54,14 @@ class CachedImage extends StatelessWidget {
               image: imageProvider,
               fit: fit ?? BoxFit.fill,
               colorFilter: colorFilter),
-          borderRadius:
-              haveRadius ? borderRadius ?? BorderRadius.circular(0) : null,
+          borderRadius: haveRadius
+              ? borderRadius ?? BorderRadius.circular(AppCircular.r2)
+              : null,
           shape: boxShape ?? BoxShape.rectangle,
           border: Border.all(
-              color: borderColor ?? Colors.transparent,
-              width: borderWidth ?? 1),
+            color: borderColor ?? Colors.transparent,
+            width: borderWidth ?? 1,
+          ),
         ),
         alignment: alignment ?? Alignment.center,
         child: child,
@@ -69,16 +71,17 @@ class CachedImage extends StatelessWidget {
         height: height,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          borderRadius:
-              haveRadius ? borderRadius ?? BorderRadius.circular(0) : null,
+          borderRadius: haveRadius
+              ? borderRadius ?? BorderRadius.circular(AppCircular.r2)
+              : null,
           border:
               Border.all(color: borderColor ?? Colors.transparent, width: 1),
           shape: boxShape ?? BoxShape.rectangle,
-          color: bgColor ?? ColorManager.primary.withOpacity(.5),
+          color: bgColor ?? ColorManager.primaryColor.withOpacity(.5),
         ),
         child: SpinKitFadingCircle(
-          color: ColorManager.primary,
-          size: 30.0,
+          color: ColorManager.primaryColor,
+          size: AppSize.sH30,
         ),
       ),
       errorWidget: (context, url, error) => Container(
@@ -86,11 +89,14 @@ class CachedImage extends StatelessWidget {
         height: height,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: bgColor ?? ColorManager.primary.withOpacity(.5),
-          borderRadius:
-              haveRadius ? borderRadius ?? BorderRadius.circular(0) : null,
-          border:
-              Border.all(color: borderColor ?? Colors.transparent, width: 1),
+          color: bgColor ?? ColorManager.primaryColor.withOpacity(.5),
+          borderRadius: haveRadius
+              ? borderRadius ?? BorderRadius.circular(AppCircular.r2)
+              : null,
+          border: Border.all(
+            color: borderColor ?? Colors.transparent,
+            width: 1,
+          ),
           shape: boxShape ?? BoxShape.rectangle,
         ),
         child: Stack(

@@ -1,41 +1,43 @@
-// // ignore_for_file: use_super_parameters
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_base/src/config/res/app_assets.dart';
+ import 'package:lottie/lottie.dart';
 
-// import 'package:flutter/material.dart'; 
-// import '../res/color_manager.dart'; 
-// class ExceptionView extends StatelessWidget {
-//   const ExceptionView({Key? key}) : super(key: key);
+import '../../config/language/locale_keys.g.dart';
+import '../../config/res/app_sizes.dart';
+import '../../config/res/color_manager.dart';
+import 'buttons/default_button.dart';
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Colors.white,
-//       body: Column(
-//         mainAxisAlignment: MainAxisAlignment.center,
-//         children: [
-//           Lottie.asset(
-//             AssetsManager.error,
-//             width: MediaQuery.of(context).size.width * .7,
-//             height: MediaQuery.of(context).size.height * .3,
-//           ),
-//           Container(
-//             margin: EdgeInsets.symmetric(vertical: AppMargin.mH20),
-//             child: Center(
-//               child: Text(
-//                 tr(context, "expetion"),
-//                 style: TextStyle(
-//                     fontSize: FontSize.s14, color: ColorManager.primary),
-//               ),
-//             ),
-//           ),
-//           DefaultButton(
-//             onTap: () {},
-//             title: tr(context, "contact_us"),
-//             fontSize: 12,
-//             textColor: ColorManager.white,
-//             width: MediaQuery.of(context).size.width * .45,
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
+class ExceptionView extends StatelessWidget {
+  const ExceptionView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Lottie.asset(
+            LottieManager.error,
+            width: MediaQuery.of(context).size.width * .7,
+            height: MediaQuery.of(context).size.height * .3,
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(vertical: AppMargin.mH20),
+            child: Center(
+              child: Text(LocaleKeys.expetion.tr()),
+            ),
+          ),
+          DefaultButton(
+            width: MediaQuery.of(context).size.width * .45,
+            title: LocaleKeys.contact_us.tr(),
+            textColor: ColorManager.buttonTextColor,
+            fontSize: FontSize.s12,
+            onTap: () {},
+          ),
+        ],
+      ),
+    );
+  }
+}

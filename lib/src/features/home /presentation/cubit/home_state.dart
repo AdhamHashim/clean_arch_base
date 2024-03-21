@@ -5,7 +5,11 @@ final class HomeState extends Equatable {
   final List<PlayerEntity> players;
   final String errorMessage;
 
-  const HomeState({required this.baseState, required this.players, this.errorMessage = ''});
+  const HomeState({
+    required this.baseState,
+    required this.players,
+    this.errorMessage = ConstantManager.EMPTY_TEXT,
+  });
 
   factory HomeState.initial() {
     return const HomeState(

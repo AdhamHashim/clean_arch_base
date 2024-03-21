@@ -1,6 +1,5 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_base/src/config/res/app_sizes.dart';
 
 class ImageView extends StatelessWidget {
   const ImageView({
@@ -34,7 +33,7 @@ class ImageView extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(12.0.r),
+              padding: EdgeInsets.all(AppPadding.pH12),
               child: const CloseButton(
                 color: Colors.grey,
               ),
@@ -43,34 +42,5 @@ class ImageView extends StatelessWidget {
         ),
       ),
     );
-
-    // return Scaffold(
-    //   primary: false,
-    //   // appBar:AppBars.basic(),
-    //   body: SafeArea(
-    //     child: Stack(
-    //       alignment: Alignment.topLeft,
-    //       children: [
-    //         Container(
-    //           constraints: BoxConstraints.expand(
-    //             height: MediaQuery.of(context).size.height,
-    //           ),
-    //           child: PhotoView(
-    //             imageProvider: imageProvider,
-    //             minScale: minScale,
-    //             maxScale: maxScale,
-    //             // heroAttributes: const PhotoViewHeroAttributes(tag: "someTag.Home",),
-    //           ),
-    //         ),
-    //         Padding(
-    //           padding: EdgeInsets.all(12.0.toRad()),
-    //           child: const CloseButton(
-    //             color: Colors.grey,
-    //           ),
-    //         ),
-    //       ],
-    //     ),
-    //   ),
-    // );
   }
 }

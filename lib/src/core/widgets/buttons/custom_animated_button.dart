@@ -2,7 +2,7 @@ import 'dart:ui' show lerpDouble;
 
 import 'package:flutter/material.dart';
 
-import '../../res/color_manager.dart';
+import '../../../config/res/color_manager.dart';
 
 // ignore: constant_identifier_names
 enum ButtonState { Busy, Idle }
@@ -36,7 +36,7 @@ class CustomButtonAnimation extends StatefulWidget {
     required this.width,
     this.minWidth = 0,
     this.loader,
-    this.animationDuration = const Duration(milliseconds: 450),
+    this.animationDuration = const Duration(milliseconds: 500),
     this.curve = Curves.easeInOutCirc,
     this.reverseCurve = Curves.easeInOutCirc,
     required this.child,
@@ -152,7 +152,10 @@ class CustomButtonState extends State<CustomButtonAnimation>
           side: widget.borderSide,
           borderRadius: BorderRadius.circular(widget.roundLoadingShape
               ? lerpDouble(
-                  widget.borderRadius, widget.height / 2, _animation.value)!
+                  widget.borderRadius,
+                  widget.height / 2,
+                  _animation.value,
+                )!
               : widget.borderRadius),
         ),
         child: ElevatedButton(
@@ -162,7 +165,7 @@ class CustomButtonState extends State<CustomButtonAnimation>
               elevation: widget.elevation,
               padding: widget.padding,
               disabledBackgroundColor:
-                  widget.disabledColor ?? ColorManager.primary,
+                  widget.disabledColor ?? ColorManager.blackColor,
               shape: RoundedRectangleBorder(
                 side: widget.borderSide,
                 borderRadius: BorderRadius.circular(widget.roundLoadingShape

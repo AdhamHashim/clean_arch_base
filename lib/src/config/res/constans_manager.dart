@@ -1,5 +1,6 @@
 // ignore_for_file: non_constant_identifier_names, constant_identifier_names
 
+ 
 import 'package:get_it/get_it.dart';
 
 class ConstantManager {
@@ -18,4 +19,7 @@ class ConstantManager {
   static const int MAX_LINE = 4;
   static const double SNACKBAR_ELEVATION = 4;
   static const int SNACKBAR_DURATION = 4;
+  static const int CONECT_TIME_OUT = 5;
+  static const int RECIEVE_TIME_OUT = 3;
+  static const double CUSTOM_IMAGE_SLIDER_ASPECT_RATIO = 3;
 }

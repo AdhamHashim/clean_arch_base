@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base/src/config/res/constans_manager.dart';
 
-import '../../res/color_manager.dart';
-import '../../res/app_sizes.dart';
+import '../../../config/res/color_manager.dart';
+import '../../../config/res/app_sizes.dart';
 
 class DefaultButton extends StatelessWidget {
   final String? title;
@@ -45,7 +46,7 @@ class DefaultButton extends StatelessWidget {
       padding: margin ??
           EdgeInsets.symmetric(
             horizontal: AppMargin.mW10,
-            vertical: AppMargin.mH5,
+            vertical: AppMargin.mH4,
           ),
       child: SizedBox(
         width: width ?? MediaQuery.of(context).size.width,
@@ -54,26 +55,30 @@ class DefaultButton extends StatelessWidget {
           onPressed: onTap,
           style: ElevatedButton.styleFrom(
             splashFactory: InkRipple.splashFactory,
-            surfaceTintColor: color ?? ColorManager.primary,
-            foregroundColor: color ?? ColorManager.primary,
-            backgroundColor: color ?? ColorManager.primary,
+            surfaceTintColor: color ?? ColorManager.primaryColor,
+            foregroundColor: color ?? ColorManager.primaryColor,
+            backgroundColor: color ?? ColorManager.primaryColor,
             shape: RoundedRectangleBorder(
               borderRadius: borderRadius ?? BorderRadius.circular(AppSize.sH10),
               side: borderColor != null
                   ? BorderSide(
-                      color: borderColor ?? ColorManager.primary, width: 1)
+                      color: borderColor ?? ColorManager.primaryColor,
+                      width: 1,
+                    )
                   : BorderSide.none,
             ),
-            elevation: elevation ?? 0,
+            elevation: elevation ?? ConstantManager.DZERO,
           ),
           child: customChild ??
-              Text(title ?? 'Click!',
-                  style: TextStyle(
-                    color: textColor ?? Colors.white,
-                    fontSize: fontSize ?? FontSize.s16,
-                    fontFamily: fontFamily,
-                    fontWeight: fontWeight ?? FontWeight.w500,
-                  )),
+              Text(
+                title ?? 'Click!',
+                style: TextStyle(
+                  color: textColor ?? Colors.white,
+                  fontSize: fontSize ?? FontSize.s16,
+                  fontFamily: fontFamily,
+                  fontWeight: fontWeight ?? FontWeight.w500,
+                ),
+              ),
         ),
       ),
     );

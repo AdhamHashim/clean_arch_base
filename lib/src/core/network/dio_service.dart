@@ -1,10 +1,14 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_base/src/config/res/constans_manager.dart';
 import 'package:flutter_base/src/core/network/extensions.dart';
 
 import '../../config/language/languages.dart';
+import '../../config/language/locale_keys.g.dart';
+import '../../config/res/status_code.dart';
 import '../error/exceptions.dart';
 import '../shared/global_user_data.dart';
 import 'network_request.dart';
@@ -19,9 +23,13 @@ class DioService implements NetworkService {
 
   void _initDio() {
     _dio = Dio()
-      ..options.baseUrl = 'www.test.com/api/'
-      ..options.connectTimeout = const Duration(seconds: 5)
-      ..options.receiveTimeout = const Duration(seconds: 3)
+      ..options.baseUrl = ConstantManager.BASE_URL
+      ..options.connectTimeout = const Duration(
+        seconds: ConstantManager.CONECT_TIME_OUT,
+      )
+      ..options.receiveTimeout = const Duration(
+        seconds: ConstantManager.RECIEVE_TIME_OUT,
+      )
       ..options.responseType = ResponseType.json;
 
     if (kDebugMode) {
@@ -39,7 +47,8 @@ class DioService implements NetworkService {
     final Map<String, dynamic> headers = {};
     headers.addAll({
       HttpHeaders.acceptHeader: ContentType.json,
-      'lang': Languages.currentLanguage?.locale.languageCode ?? 'en',
+      'lang': Languages.currentLanguage?.locale.languageCode ??
+          Languages.english.languageCode,
     });
     if (isWithoutToken != true) {
       headers['Authorization'] = 'Bearer ${GlobalUserData().token}';
@@ -81,38 +90,44 @@ class DioService implements NetworkService {
   dynamic _handleError(DioException error) {
     switch (error.type) {
       case DioExceptionType.connectionTimeout:
-        throw const SocketException('no_internet');
+        throw SocketException(LocaleKeys.checkInternet.tr());
       case DioExceptionType.sendTimeout:
-        throw const SocketException('no_internet');
+        throw SocketException(LocaleKeys.checkInternet.tr());
       case DioExceptionType.receiveTimeout:
-        throw const SocketException('no_internet');
+        throw SocketException(LocaleKeys.checkInternet.tr());
       case DioExceptionType.badResponse:
         switch (error.response!.statusCode) {
-          case 400:
+          case StatusCode.badRequest:
             throw BadRequestException(
-                error.response?.data['message'] ?? 'bad_request');
-          case 401:
+              error.response?.data['message'] ?? LocaleKeys.bad_request.tr(),
+            );
+          case StatusCode.unauthorized:
             throw UnauthorizedException(
-                error.response?.data['message'] ?? 'unauthorized');
-          case 404:
-            throw const NotFoundException('not_found');
-          case 409:
+              error.response?.data['message'] ?? LocaleKeys.unauthorized.tr(),
+            );
+          case StatusCode.notFound:
+            throw NotFoundException(LocaleKeys.notFound.tr());
+          case StatusCode.conflict:
             throw ConflictException(
-                error.response?.data['message'] ?? 'conflict');
-          case 500:
+              error.response?.data['message'] ?? LocaleKeys.serverError.tr(),
+            );
+          case StatusCode.internalServerError:
             throw InternalServerErrorException(
-                error.response?.data['message'] ?? 'server_error');
+              error.response?.data['message'] ?? LocaleKeys.serverError.tr(),
+            );
           default:
-            throw const ServerException('server_error');
+            throw ServerException(LocaleKeys.serverError.tr());
         }
       case DioExceptionType.cancel:
-        throw const ServerException('request_cancelled');
+        throw ServerException(LocaleKeys.intenetWeaness.tr());
       case DioExceptionType.unknown:
         throw ServerException(
-            error.response?.data['message'] ?? 'unknown_error');
+          error.response?.data['message'] ?? LocaleKeys.error.tr(),
+        );
       default:
         throw ServerException(
-            error.response?.data['message'] ?? 'unknown_error');
+          error.response?.data['message'] ?? LocaleKeys.error.tr(),
+        );
     }
   }
 }

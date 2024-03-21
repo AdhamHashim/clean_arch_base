@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:flutter_base/src/config/res/status_code.dart';
 
 import 'network_request.dart';
 
@@ -17,17 +18,17 @@ extension NetworkRequestExtension on NetworkRequest {
   String asString() {
     switch (method) {
       case RequestMethod.get:
-        return 'GET';
+        return ApiMethodType.get;
       case RequestMethod.post:
-        return 'POST';
+        return ApiMethodType.post;
       case RequestMethod.put:
-        return 'PUT';
+        return ApiMethodType.put;
       case RequestMethod.patch:
-        return 'PATCH';
+        return ApiMethodType.patch;
       case RequestMethod.delete:
-        return 'DELETE';
+        return ApiMethodType.delete;
       default:
-        return 'GET';
+        return ApiMethodType.get;
     }
   }
 

@@ -1,28 +1,32 @@
+import 'package:easy_localization/easy_localization.dart';
+
+import '../../config/language/locale_keys.g.dart';
+ 
 class Validators {
   static String? validateEmpty(String? value, {String? message}) {
     if (value == null || value.isEmpty) {
-      return message ?? 'Empty Value Required!';
+      return message ?? LocaleKeys.fillField.tr();
     }
     return null;
   }
 
   static String? validatePassword(String? value, {String? message}) {
     if (value?.trim().isEmpty ?? true) {
-      return message ?? 'password is required!';
+      return message ?? LocaleKeys.passRequiredValidation.tr();
     } else if (value!.length < 6) {
-      return message ?? 'password is too short!';
+      return message ?? LocaleKeys.passValidation.tr();
     }
     return null;
   }
 
   static String? validateEmail(String? value, {String? message}) {
     if (value?.trim().isEmpty ?? true) {
-      return message ?? 'Email is not valid';
+      return message ?? LocaleKeys.mailValidation.tr();
     } else if (!RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.["
             r"a-zA-Z]+")
         .hasMatch(value!)) {
-      return message ?? 'Email is not valid';
+      return message ?? LocaleKeys.mailValidation.tr();
     }
     return null;
   }
@@ -34,7 +38,7 @@ class Validators {
                 r'{4,6}$)')
             .hasMatch(value!) ||
         value.length < 10) {
-      return message ?? 'Wrong phone';
+      return message ?? LocaleKeys.phoneValidation.tr();
     }
     return null;
   }
@@ -42,16 +46,16 @@ class Validators {
   static String? validatePasswordConfirm(String? value, String? pass,
       {String? message}) {
     if (value?.trim().isEmpty ?? true) {
-      return message ?? 'Empty Value Required!';
+      return message ??  LocaleKeys.fillField.tr();
     } else if (value != pass) {
-      return message ?? 'confirm password';
+      return message ?? LocaleKeys.confirmValidation.tr();
     }
     return null;
   }
 
   static String? validateDropDown(dynamic value, {String? message}) {
     if (value == null) {
-      return message ?? 'Empty Value Required!';
+      return message ??  LocaleKeys.fillField.tr();
     }
     return null;
   }

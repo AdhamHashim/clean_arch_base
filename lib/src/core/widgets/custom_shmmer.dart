@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base/src/config/res/app_sizes.dart';
 import 'package:shimmer/shimmer.dart';
 
 class CustomShimmer extends StatelessWidget {
@@ -6,7 +7,7 @@ class CustomShimmer extends StatelessWidget {
   final double height;
   final Color? baseColor;
   final Color? highlightColor;
-  final double margin;
+  final double? margin;
   final BorderRadius? borderRadius;
 
   const CustomShimmer({
@@ -15,7 +16,7 @@ class CustomShimmer extends StatelessWidget {
     required this.height,
     this.baseColor,
     this.highlightColor,
-    this.margin = 10,
+    this.margin,
     this.borderRadius,
   });
 
@@ -27,9 +28,9 @@ class CustomShimmer extends StatelessWidget {
       child: Container(
         width: width,
         height: height,
-        margin: EdgeInsets.symmetric(horizontal: margin),
+        margin: EdgeInsets.symmetric(horizontal: margin ?? AppMargin.mH10),
         decoration: BoxDecoration(
-          borderRadius: borderRadius ?? BorderRadius.circular(5),
+          borderRadius: borderRadius ?? BorderRadius.circular(AppCircular.r5),
           color: Colors.grey[300],
         ),
       ),

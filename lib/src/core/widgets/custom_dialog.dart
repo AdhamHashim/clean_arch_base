@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base/src/core/res/color_manager.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_base/src/config/res/app_sizes.dart';
+import 'package:flutter_base/src/config/res/color_manager.dart';
+import 'package:flutter_base/src/config/res/constans_manager.dart';
 
 void showCustomDialog(BuildContext context,
     {required Widget child,
@@ -10,7 +11,7 @@ void showCustomDialog(BuildContext context,
     Color? color}) {
   showGeneralDialog(
     context: context,
-    barrierLabel: "Barrier",
+    barrierLabel: ConstantManager.EMPTY_TEXT,
     barrierDismissible: barrierDismissible,
     barrierColor: Colors.black.withOpacity(0.5),
     transitionDuration: const Duration(milliseconds: 250),
@@ -18,14 +19,12 @@ void showCustomDialog(BuildContext context,
       return Center(
         child: Container(
           width: double.infinity,
-          margin: EdgeInsets.symmetric(
-            horizontal: 25.w,
-          ),
-          padding:
-              padding ?? EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+          margin: EdgeInsets.symmetric(horizontal: AppPadding.pH20),
+          padding: padding ?? EdgeInsets.all(AppPadding.pH20),
           decoration: BoxDecoration(
-              color: color ?? ColorManager.white,
-              borderRadius: borderRadius ?? BorderRadius.circular(40)),
+            color: color ?? ColorManager.whiteColor,
+            borderRadius: borderRadius ?? BorderRadius.circular(AppSize.sH25),
+          ),
           child: child,
         ),
       );

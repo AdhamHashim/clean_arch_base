@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base/src/config/res/constans_manager.dart';
 
 extension PaddingExtension on Widget {
   Widget padding(EdgeInsetsGeometry padding) {
@@ -14,8 +15,8 @@ extension PaddingExtension on Widget {
   }) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: horizontal ?? 0.0,
-        vertical: vertical ?? 0.0,
+        horizontal: horizontal ?? ConstantManager.DZERO,
+        vertical: vertical ?? ConstantManager.DZERO,
       ),
       child: this,
     );
@@ -50,14 +51,23 @@ extension PaddingExtension on Widget {
   }
 
   Widget paddingBottom(double padding) {
-    return Padding(padding: EdgeInsets.only(bottom: padding), child: this);
+    return Padding(
+      padding: EdgeInsets.only(bottom: padding),
+      child: this,
+    );
   }
 
-  Widget paddingStart (double padding) {
-    return Padding(padding: EdgeInsetsDirectional.only(start: padding), child: this);
+  Widget paddingStart(double padding) {
+    return Padding(
+      padding: EdgeInsetsDirectional.only(start: padding),
+      child: this,
+    );
   }
 
-  Widget paddingEnd (double padding) {
-    return Padding(padding: EdgeInsetsDirectional.only(end: padding), child: this);
+  Widget paddingEnd(double padding) {
+    return Padding(
+      padding: EdgeInsetsDirectional.only(end: padding),
+      child: this,
+    );
   }
 }

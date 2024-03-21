@@ -1,4 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
+
+import '../../config/language/locale_keys.g.dart';
 
 class ServerException extends Equatable implements Exception {
   final String message;
@@ -9,39 +12,39 @@ class ServerException extends Equatable implements Exception {
   String toString() {
     return message;
   }
-  
+
   @override
   List<Object?> get props => [message];
 }
 
 class FetchDataException extends ServerException {
-  const FetchDataException([message]) : super("Error During Communication");
+  const FetchDataException([message]) : super(message);
 }
 
 class BadRequestException extends ServerException {
-  const BadRequestException([message]) : super("Bad Request");
+  const BadRequestException([message]) : super(message);
 }
 
 class UnauthorizedException extends ServerException {
-  const UnauthorizedException([message]) : super("Unauthorized");
+  const UnauthorizedException([message]) : super(message);
 }
 
 class NotFoundException extends ServerException {
-  const NotFoundException([message]) : super("Requested Info Not Found");
+  const NotFoundException([message]) : super(message);
 }
 
 class ConflictException extends ServerException {
-  const ConflictException([message]) : super("Conflict Occurred");
+  const ConflictException([message]) : super(message);
 }
 
 class InternalServerErrorException extends ServerException {
-  const InternalServerErrorException([message])
-      : super("Internal Server Error");
+  InternalServerErrorException([message])
+      : super(LocaleKeys.checkInternet.tr());
 }
 
 class NoInternetConnectionException extends ServerException {
-  const NoInternetConnectionException([message])
-      : super("No Internet Connection");
+  NoInternetConnectionException([message])
+      : super(LocaleKeys.checkInternet.tr());
 }
 
 class CacheException implements Exception {}

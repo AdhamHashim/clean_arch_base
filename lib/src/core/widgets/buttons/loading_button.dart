@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base/src/core/res/color_manager.dart';
+import 'package:flutter_base/src/config/res/color_manager.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-import '../../res/app_sizes.dart';
+import '../../../config/res/app_sizes.dart';
 import 'custom_animated_button.dart';
 
 class LoadingButton extends StatelessWidget {
@@ -51,11 +51,11 @@ class LoadingButton extends StatelessWidget {
         width: width ?? MediaQuery.of(context).size.width,
         minWidth: AppSize.sW50,
         height: height ?? AppSize.sH50,
-        color: color ?? ColorManager.primary,
+        color: color ?? ColorManager.primaryColor,
         borderRadius: borderRadius ?? AppSize.sH10,
-        disabledColor: color ?? ColorManager.primary,
+        disabledColor: color ?? ColorManager.primaryColor,
         borderSide: borderColor != null
-            ? BorderSide(color: ColorManager.primary, width: 1)
+            ? const BorderSide(color: ColorManager.primaryColor, width: 1)
             : BorderSide.none,
         loader: Container(
           padding: EdgeInsets.all(AppPadding.pH10),

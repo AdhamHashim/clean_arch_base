@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+
 enum RequestMethod { get, post, put, delete, patch }
 
 class NetworkRequest<GenericModel> {
@@ -11,14 +12,16 @@ class NetworkRequest<GenericModel> {
   final ProgressCallback? onSendProgress;
   final ProgressCallback? onReceiveProgress;
 
-  NetworkRequest(this.path,
-      {required this.method,
-      this.body,
-      this.queryParameters,
-      this.requestWithOutToken = false,
-      this.isFormData = false,
-      this.onSendProgress,
-      this.onReceiveProgress});
+  NetworkRequest({
+    required this.method,
+    required this.path,
+    this.body,
+    this.queryParameters,
+    this.requestWithOutToken = false,
+    this.isFormData = false,
+    this.onSendProgress,
+    this.onReceiveProgress,
+  });
   NetworkRequest copyWith({
     String? path,
     RequestMethod? method,
@@ -30,7 +33,7 @@ class NetworkRequest<GenericModel> {
     ProgressCallback? onReceiveProgress,
   }) {
     return NetworkRequest(
-      path ?? this.path,
+      path: path ?? this.path,
       method: method ?? this.method,
       body: body ?? this.body,
       queryParameters: queryParameters ?? this.queryParameters,
