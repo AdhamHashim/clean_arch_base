@@ -116,8 +116,8 @@ class NotificationService {
   }
 
   Future<void> _saveFcmToken() async {
-    var token = await FirebaseMessaging.instance.getToken();
-    GlobalUserData().deviceToken = token ?? '';
+    final token = await FirebaseMessaging.instance.getToken();
+    GlobalUserData().deviceToken = token;
     log("Firebase Fcm token : ${token.toString()}");
   }
 

@@ -1,3 +1,4 @@
+import 'package:flutter_base/src/core/helpers/notification_service.dart';
 import 'package:flutter_base/src/core/network/dio_service.dart';
 import 'package:flutter_base/src/core/network/network_service.dart';
 import 'package:flutter_base/src/core/res/constans_manager.dart';
@@ -12,5 +13,9 @@ void setUpServiceLocators() {
 void setUpGeneralDependencies() {
   ConstantManager.GET_IT_LOCATOR.registerLazySingleton<NetworkService>(
     () => DioService(),
+  );
+
+  ConstantManager.GET_IT_LOCATOR.registerLazySingleton<NotificationService>(
+    () => NotificationService(),
   );
 }

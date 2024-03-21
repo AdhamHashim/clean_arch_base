@@ -18,14 +18,6 @@ class GlobalUserData {
     this.deviceToken = deviceToken;
   }
 
-  set setDeviceToken(String deviceToken) {
-    this.deviceToken = deviceToken;
-  }
-
-  set setToken(String token) {
-    this.token = token;
-  }
-
   Future<bool> get isUserLoggedIn async {
     final String? token = await SecureStorage.read('token');
     return token != null && token.isNotEmpty;
