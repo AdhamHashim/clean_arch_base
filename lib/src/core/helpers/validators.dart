@@ -54,10 +54,8 @@ class Validators {
     }
     return null;
   }
-}
 
-extension ValidateDropDown<T> on Object? {
-  String? validateDropDown(T? value, {String? message}) {
+  static String? validateDropDown<T>(T? value, {String? message}) {
     if (value == null) {
       return message ?? LocaleKeys.fillField.tr();
     }
