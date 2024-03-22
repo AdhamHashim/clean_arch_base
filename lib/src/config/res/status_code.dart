@@ -5,11 +5,3 @@ class StatusCode {
   static const int unauthorized = 401;
   static const int conflict = 409;
 }
-
-class ApiMethodType {
-  static const String get = "GET";
-  static const String post = "POST";
-  static const String put = "PUT";
-  static const String patch = "PATCH";
-  static const String delete = "DELETE";
-}

@@ -1,8 +1,6 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_base/src/config/res/status_code.dart';
-
 import 'network_request.dart';
 
 extension NetworkRequestExtension on NetworkRequest {
@@ -16,20 +14,7 @@ extension NetworkRequestExtension on NetworkRequest {
       method == RequestMethod.delete;
 
   String asString() {
-    switch (method) {
-      case RequestMethod.get:
-        return ApiMethodType.get;
-      case RequestMethod.post:
-        return ApiMethodType.post;
-      case RequestMethod.put:
-        return ApiMethodType.put;
-      case RequestMethod.patch:
-        return ApiMethodType.patch;
-      case RequestMethod.delete:
-        return ApiMethodType.delete;
-      default:
-        return ApiMethodType.get;
-    }
+    return method.toString().split('.').last.toUpperCase();
   }
 
   Future<void> prepareRequestData() async {
