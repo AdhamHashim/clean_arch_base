@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 import '../../config/language/locale_keys.g.dart';
- 
+
 class Validators {
   static String? validateEmpty(String? value, {String? message}) {
     if (value == null || value.isEmpty) {
@@ -46,16 +48,18 @@ class Validators {
   static String? validatePasswordConfirm(String? value, String? pass,
       {String? message}) {
     if (value?.trim().isEmpty ?? true) {
-      return message ??  LocaleKeys.fillField.tr();
+      return message ?? LocaleKeys.fillField.tr();
     } else if (value != pass) {
       return message ?? LocaleKeys.confirmValidation.tr();
     }
     return null;
   }
+}
 
-  static String? validateDropDown(dynamic value, {String? message}) {
+extension ValidateDropDown<T> on Object? {
+  String? validateDropDown(T? value, {String? message}) {
     if (value == null) {
-      return message ??  LocaleKeys.fillField.tr();
+      return message ?? LocaleKeys.fillField.tr();
     }
     return null;
   }
