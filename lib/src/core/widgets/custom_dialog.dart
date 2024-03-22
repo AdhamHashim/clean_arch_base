@@ -11,7 +11,7 @@ void showCustomDialog(BuildContext context,
     Color? color}) {
   showGeneralDialog(
     context: context,
-    barrierLabel: ConstantManager.EMPTY_TEXT,
+    barrierLabel: ConstantManager.emptyText,
     barrierDismissible: barrierDismissible,
     barrierColor: Colors.black.withOpacity(0.5),
     transitionDuration: const Duration(milliseconds: 250),

@@ -17,7 +17,8 @@ extension ContextExtension on BuildContext {
 
   double get height => mediaQuery.size.height;
 
-  bool get isKeyboardOpen => MediaQuery.of(this).viewInsets.bottom > ConstantManager.ZERO;
+  bool get isKeyboardOpen =>
+      MediaQuery.of(this).viewInsets.bottom > ConstantManager.zero;
 
   bool get isPortrait => mediaQuery.orientation == Orientation.portrait;
 
@@ -29,7 +30,8 @@ extension ContextExtension on BuildContext {
 }
 
 extension LanguageExtension on Widget {
-    Widget overRideLocaization({required BuildContext context, required Languages lang}) {
+  Widget overRideLocaization(
+      {required BuildContext context, required Languages lang}) {
     return Localizations.override(
       context: context,
       locale: lang.locale,

@@ -5,6 +5,7 @@ import 'package:flutter_base/src/config/res/constans_manager.dart';
 import 'package:flutter_base/src/core/widgets/offline_widget.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'config/themes/app_theme.dart';
 import 'core/navigation/named_routes.dart';
 import 'core/navigation/navigator.dart';
@@ -23,7 +24,7 @@ class App extends StatelessWidget {
       builder: (ctx, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: ConstantManager.PROJECT_NAME,
+          title: ConstantManager.projectName,
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,
           locale: context.locale,

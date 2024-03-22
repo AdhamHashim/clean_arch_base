@@ -12,7 +12,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
       method: RequestMethod.get,
       queryParameters: {'search': searchQuery},
     );
-    return ConstantManager.GET_IT_LOCATOR<NetworkService>()
+    return ConstantManager.serviceLocator<NetworkService>()
         .callApi(networkRequest);
   }
 }

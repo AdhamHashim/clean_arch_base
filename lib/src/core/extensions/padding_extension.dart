@@ -15,8 +15,8 @@ extension PaddingExtension on Widget {
   }) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: horizontal ?? ConstantManager.DZERO,
-        vertical: vertical ?? ConstantManager.DZERO,
+        horizontal: horizontal ?? ConstantManager.zeroAsDouble,
+        vertical: vertical ?? ConstantManager.zeroAsDouble,
       ),
       child: this,
     );

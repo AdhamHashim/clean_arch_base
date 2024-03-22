@@ -4,6 +4,7 @@ import 'package:flutter_base/src/config/res/app_sizes.dart';
 import 'package:flutter_base/src/config/res/constans_manager.dart';
 import 'package:flutter_base/src/core/extensions/sized_box_helper.dart';
 import 'package:pinput/pinput.dart';
+
 import '../../../config/res/color_manager.dart';
 
 class CustomPinTextField extends StatelessWidget {
@@ -30,7 +31,7 @@ class CustomPinTextField extends StatelessWidget {
       border: Border.all(color: ColorManager.errorColor),
     );
     return Pinput(
-      length: ConstantManager.PIN_CODE_FIELDS_COUNT,
+      length: ConstantManager.pinCodeFieldsCount,
       keyboardType: TextInputType.number,
       inputFormatters: [
         FilteringTextInputFormatter.digitsOnly,

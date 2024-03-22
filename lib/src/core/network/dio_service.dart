@@ -23,12 +23,12 @@ class DioService implements NetworkService {
 
   void _initDio() {
     _dio = Dio()
-      ..options.baseUrl = ConstantManager.BASE_URL
+      ..options.baseUrl = ConstantManager.baseUrl
       ..options.connectTimeout = const Duration(
-        seconds: ConstantManager.CONECT_TIME_OUT,
+        seconds: ConstantManager.connectTimeoutDuration,
       )
       ..options.receiveTimeout = const Duration(
-        seconds: ConstantManager.RECIEVE_TIME_OUT,
+        seconds: ConstantManager.recieveTimeoutDuration,
       )
       ..options.responseType = ResponseType.json;
 

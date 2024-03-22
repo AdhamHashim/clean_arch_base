@@ -8,7 +8,7 @@ final class HomeState extends Equatable {
   const HomeState({
     required this.baseState,
     required this.players,
-    this.errorMessage = ConstantManager.EMPTY_TEXT,
+    this.errorMessage = ConstantManager.emptyText,
   });
 
   factory HomeState.initial() {

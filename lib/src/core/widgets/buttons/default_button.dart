@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base/src/config/res/constans_manager.dart';
 
-import '../../../config/res/color_manager.dart';
 import '../../../config/res/app_sizes.dart';
+import '../../../config/res/color_manager.dart';
 
 class DefaultButton extends StatelessWidget {
   final String? title;
@@ -67,7 +67,7 @@ class DefaultButton extends StatelessWidget {
                     )
                   : BorderSide.none,
             ),
-            elevation: elevation ?? ConstantManager.DZERO,
+            elevation: elevation ?? ConstantManager.zeroAsDouble,
           ),
           child: customChild ??
               Text(

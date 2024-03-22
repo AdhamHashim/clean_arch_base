@@ -11,11 +11,11 @@ void setUpServiceLocators() {
 }
 
 void setUpGeneralDependencies() {
-  ConstantManager.GET_IT_LOCATOR.registerLazySingleton<NetworkService>(
+  ConstantManager.serviceLocator.registerLazySingleton<NetworkService>(
     () => DioService(),
   );
 
-  ConstantManager.GET_IT_LOCATOR.registerLazySingleton<NotificationService>(
+  ConstantManager.serviceLocator.registerLazySingleton<NotificationService>(
     () => NotificationService(),
   );
 }

@@ -120,7 +120,7 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
       cursorColor: ColorManager.primaryColor,
       decoration: InputDecoration(
         isDense: true,
-        counterText: ConstantManager.EMPTY_TEXT,
+        counterText: ConstantManager.emptyText,
         filled: widget.filled,
         suffixText: widget.suffixText,
         prefixIcon: widget.isPassword == true

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base/src/config/res/app_sizes.dart';
 import 'package:flutter_base/src/config/res/constans_manager.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import '../navigation/navigator.dart';
+
 import '../../config/res/color_manager.dart';
+import '../navigation/navigator.dart';
 import 'app_text.dart';
 
 class MessageUtils {
@@ -13,7 +14,7 @@ class MessageUtils {
     BuildContext? context,
   }) {
     final snackBar = SnackBar(
-      duration: const Duration(seconds: ConstantManager.SNACKBAR_DURATION),
+      duration: const Duration(seconds: ConstantManager.snackbarDuration),
       content: AppText(message, color: ColorManager.whiteColor),
       backgroundColor: backgroundColor ?? ColorManager.whiteColor,
       behavior: SnackBarBehavior.floating,
