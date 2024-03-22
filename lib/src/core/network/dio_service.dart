@@ -13,9 +13,10 @@ import '../error/exceptions.dart';
 import '../shared/global_user_data.dart';
 import 'network_request.dart';
 import 'network_service.dart';
+import 'log_interceptor.dart';
 
 class DioService implements NetworkService {
-  late Dio _dio;
+  late final Dio _dio;
 
   DioService() {
     _initDio();
@@ -33,13 +34,7 @@ class DioService implements NetworkService {
       ..options.responseType = ResponseType.json;
 
     if (kDebugMode) {
-      _dio.interceptors.add(LogInterceptor(
-          request: true,
-          requestBody: true,
-          responseBody: true,
-          requestHeader: true,
-          responseHeader: true,
-          error: true));
+      _dio.interceptors.add(LoggerInterceptor());
     }
   }
 
