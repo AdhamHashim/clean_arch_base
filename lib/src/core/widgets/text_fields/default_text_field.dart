@@ -21,7 +21,7 @@ class DefaultTextField extends StatefulWidget {
   final bool filled;
   final int? maxLength;
   final TextAlign? textAlign;
-
+  final EdgeInsetsGeometry? contentPadding;
   final GestureTapCallback? onTap;
   final String? suffixText;
   final TextInputAction action;
@@ -46,6 +46,7 @@ class DefaultTextField extends StatefulWidget {
     this.borderColor,
     this.onTap,
     this.controller,
+    this.contentPadding,
     this.closeWhenTapOutSide = true,
     this.hasBorderColor = true,
     this.validator,
@@ -120,6 +121,7 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
       cursorColor: ColorManager.primaryColor,
       decoration: InputDecoration(
         isDense: true,
+        contentPadding: widget.contentPadding,
         counterText: ConstantManager.emptyText,
         filled: widget.filled,
         suffixText: widget.suffixText,

@@ -13,6 +13,8 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
       queryParameters: {'search': searchQuery},
     );
     return ConstantManager.serviceLocator<NetworkService>()
-        .callApi(networkRequest);
+        .callApi(networkRequest, mapper: ((json) => (json as List)
+            .map((e) => PlayerModel.fromJson(e as Map<String, dynamic>))
+            .toList()));
   }
 }
