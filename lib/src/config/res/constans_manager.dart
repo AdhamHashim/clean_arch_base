@@ -4,6 +4,7 @@ class ConstantManager {
   static final serviceLocator = GetIt.instance;
   static const String bundleId = "";
   static const String fontFamily = "ArbFONTS";
+  static const String token = "token";
   static const String projectName = "";
   static const int splashTimer = 4;
   static const String baseUrl = "";

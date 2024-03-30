@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_base/src/config/res/constans_manager.dart';
+import 'package:flutter_base/src/core/helpers/cache_service.dart';
 import 'package:flutter_base/src/core/network/extensions.dart';
 
 import '../../config/language/languages.dart';
@@ -46,14 +47,14 @@ class DioService implements NetworkService {
           Languages.english.languageCode,
     });
     if (isWithoutToken != true) {
-      headers['Authorization'] = 'Bearer ${GlobalUserData().token}';
+      headers['Authorization'] = 'Bearer ${CacheStorage.read(ConstantManager.token).toString()}';
     }
     return headers;
   }
 
   @override
   Future<Model> callApi<Model>(NetworkRequest networkRequest,
-      {Model Function(Map<String, dynamic> json)? mapper}) async {
+      {Model Function(dynamic json)? mapper}) async {
     try {
       await networkRequest.prepareRequestData();
       final response = await _dio.request(networkRequest.path,
