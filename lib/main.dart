@@ -10,7 +10,7 @@ import 'src/core/navigation/Constants/imports_constants.dart';
 import 'src/core/navigation/page_router/implementation/imports_page_router.dart';
 import 'src/core/navigation/page_router/imports_page_router_builder.dart';
 import 'src/core/helpers/cache_service.dart';
-import 'src/core/shared/Functions/setup_service_locators.dart';
+import 'src/core/shared/functions/setup_service_locators.dart';
 import 'src/core/shared/bloc_observer.dart';
 import 'src/core/widgets/exeption_view.dart';
 
@@ -24,7 +24,7 @@ void main() async {
     [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
   );
 
-  setUpServiceLocators();
+  setUpServiceLocator();
   PageRouterBuilder().initAppRouter(
     config: PlatformConfig(
       android: CustomPageRouterCreator(

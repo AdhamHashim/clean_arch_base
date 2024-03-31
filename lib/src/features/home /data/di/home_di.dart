@@ -1,6 +1,6 @@
 part of '../imports/data_imports.dart';
 
-void homeSetUpServiceLocator() {
+void setUpHomeDependencies() {
   ConstantManager.serviceLocator
       .registerLazySingleton<FetchFeaturedBooksUseCase>(
     () => FetchFeaturedBooksUseCase(

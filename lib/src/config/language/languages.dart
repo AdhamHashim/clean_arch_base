@@ -27,7 +27,7 @@ enum Languages {
     Go.navigatorKey.currentContext!.setLocale(lang.locale);
   }
 
-  static setLocaleWithcContext(BuildContext context, Languages lang) {
+  static setLocaleWithContext(BuildContext context, Languages lang) {
     context.setLocale(lang.locale);
   }
 

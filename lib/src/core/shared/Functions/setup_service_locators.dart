@@ -5,8 +5,8 @@ import 'package:flutter_base/src/core/network/network_service.dart';
 import '../../../config/res/constans_manager.dart';
 import '../../../features/home /data/imports/data_imports.dart';
 
-void setUpServiceLocators() {
-  homeSetUpServiceLocator();
+void setUpServiceLocator() {
+  setUpHomeDependencies();
   setUpGeneralDependencies();
 }
 

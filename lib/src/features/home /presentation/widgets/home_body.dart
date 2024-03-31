@@ -12,7 +12,7 @@ class HomeBody extends StatelessWidget {
           BaseState.loading =>
             CustomLoading.showLoadingView(),
           BaseState.error => Center(child: Text(state.errorMessage)),
-          BaseState.success => _BuildPlayerList(players: state.players)
+          BaseState.success => _PlayerList(players: state.players)
         };
       },
     );

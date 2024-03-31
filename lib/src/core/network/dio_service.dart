@@ -11,10 +11,9 @@ import '../../config/language/languages.dart';
 import '../../config/language/locale_keys.g.dart';
 import '../../config/res/status_code.dart';
 import '../error/exceptions.dart';
-import '../shared/global_user_data.dart';
+import 'log_interceptor.dart';
 import 'network_request.dart';
 import 'network_service.dart';
-import 'log_interceptor.dart';
 
 class DioService implements NetworkService {
   late final Dio _dio;
@@ -47,7 +46,8 @@ class DioService implements NetworkService {
           Languages.english.languageCode,
     });
     if (isWithoutToken != true) {
-      headers['Authorization'] = 'Bearer ${CacheStorage.read(ConstantManager.token).toString()}';
+      headers['Authorization'] =
+          'Bearer ${CacheStorage.read(ConstantManager.token).toString()}';
     }
     return headers;
   }
