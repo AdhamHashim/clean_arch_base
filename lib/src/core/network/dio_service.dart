@@ -17,6 +17,7 @@ import 'network_service.dart';
 
 class DioService implements NetworkService {
   late final Dio _dio;
+  final _defaultHeaders = <String, dynamic>{};
 
   DioService() {
     _initDio();
@@ -38,25 +39,29 @@ class DioService implements NetworkService {
     }
   }
 
-  Map<String, dynamic> _getDefaultHeaders(bool isWithoutToken) {
-    final Map<String, dynamic> headers = {};
-    headers.addAll({
-      HttpHeaders.acceptHeader: ContentType.json,
-      'lang': Languages.currentLanguage?.locale.languageCode ??
-          Languages.english.languageCode,
-    });
-    if (isWithoutToken != true) {
-      headers['Authorization'] =
-          'Bearer ${CacheStorage.read(ConstantManager.token).toString()}';
+  Future<void> _getDefaultHeaders(bool isWithoutToken) async {
+    _defaultHeaders[HttpHeaders.acceptHeader] = ContentType.json;
+    _defaultHeaders['lang'] = Languages.currentLanguage?.locale.languageCode ??
+        Languages.english.languageCode;
+    final token = await _getToken();
+    if (isWithoutToken != true && token != null) {
+      _defaultHeaders[HttpHeaders.authorizationHeader] = 'Bearer $token';
     }
-    return headers;
+  }
+
+  Future<String?> _getToken() async {
+    final token = await SecureStorage.read(ConstantManager.token);
+    return token;
   }
 
   @override
   Future<Model> callApi<Model>(NetworkRequest networkRequest,
       {Model Function(dynamic json)? mapper}) async {
     try {
-      await networkRequest.prepareRequestData();
+      await Future.wait([
+        networkRequest.prepareRequestData(),
+        _getDefaultHeaders(networkRequest.requestWithOutToken),
+      ]);
       final response = await _dio.request(networkRequest.path,
           data: networkRequest.hasBodyAndProgress()
               ? networkRequest.isFormData
@@ -71,8 +76,7 @@ class DioService implements NetworkService {
               ? networkRequest.onReceiveProgress
               : null,
           options: Options(
-              method: networkRequest.asString(),
-              headers: _getDefaultHeaders(networkRequest.requestWithOutToken)));
+              method: networkRequest.asString(), headers: _defaultHeaders));
       if (mapper != null) {
         return mapper(response.data);
       } else {
