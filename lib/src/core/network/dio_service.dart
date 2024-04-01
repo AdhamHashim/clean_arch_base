@@ -46,6 +46,8 @@ class DioService implements NetworkService {
     final token = await _getToken();
     if (isWithoutToken != true && token != null) {
       _defaultHeaders[HttpHeaders.authorizationHeader] = 'Bearer $token';
+    } else {
+      _defaultHeaders.remove(HttpHeaders.authorizationHeader);
     }
   }
 
