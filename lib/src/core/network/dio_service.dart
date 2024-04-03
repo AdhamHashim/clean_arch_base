@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_base/src/config/res/constans_manager.dart';
-import 'package:flutter_base/src/core/helpers/cache_service.dart';
 import 'package:flutter_base/src/core/network/extensions.dart';
 
 import '../../config/language/languages.dart';
@@ -17,7 +16,6 @@ import 'network_service.dart';
 
 class DioService implements NetworkService {
   late final Dio _dio;
-  final _defaultHeaders = <String, dynamic>{};
 
   DioService() {
     _initDio();
@@ -32,38 +30,31 @@ class DioService implements NetworkService {
       ..options.receiveTimeout = const Duration(
         seconds: ConstantManager.recieveTimeoutDuration,
       )
-      ..options.responseType = ResponseType.json;
+      ..options.responseType = ResponseType.json
+      ..options.headers = {
+        HttpHeaders.acceptHeader: ContentType.json,
+        'lang': Languages.currentLanguage?.locale.languageCode ??
+            Languages.english.languageCode,
+      };
 
     if (kDebugMode) {
       _dio.interceptors.add(LoggerInterceptor());
     }
   }
 
-  Future<void> _getDefaultHeaders(bool isWithoutToken) async {
-    _defaultHeaders[HttpHeaders.acceptHeader] = ContentType.json;
-    _defaultHeaders['lang'] = Languages.currentLanguage?.locale.languageCode ??
-        Languages.english.languageCode;
-    final token = await _getToken();
-    if (isWithoutToken != true && token != null) {
-      _defaultHeaders[HttpHeaders.authorizationHeader] = 'Bearer $token';
-    } else {
-      _defaultHeaders.remove(HttpHeaders.authorizationHeader);
-    }
+  void addTokenToRequest(String token) {
+    _dio.options.headers[HttpHeaders.authorizationHeader] = 'Bearer $token';
   }
 
-  Future<String?> _getToken() async {
-    final token = await SecureStorage.read(ConstantManager.token);
-    return token;
+  void removeTokenFromRequest() {
+    _dio.options.headers.remove(HttpHeaders.authorizationHeader);
   }
 
   @override
   Future<Model> callApi<Model>(NetworkRequest networkRequest,
       {Model Function(dynamic json)? mapper}) async {
     try {
-      await Future.wait([
-        networkRequest.prepareRequestData(),
-        _getDefaultHeaders(networkRequest.requestWithOutToken),
-      ]);
+      await networkRequest.prepareRequestData();
       final response = await _dio.request(networkRequest.path,
           data: networkRequest.hasBodyAndProgress()
               ? networkRequest.isFormData
@@ -78,7 +69,8 @@ class DioService implements NetworkService {
               ? networkRequest.onReceiveProgress
               : null,
           options: Options(
-              method: networkRequest.asString(), headers: _defaultHeaders));
+              method: networkRequest.asString(),
+              headers: networkRequest.headers));
       if (mapper != null) {
         return mapper(response.data);
       } else {

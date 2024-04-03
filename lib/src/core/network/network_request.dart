@@ -7,7 +7,7 @@ class NetworkRequest<GenericModel> {
   final RequestMethod method;
   final Map<String, dynamic>? body;
   final Map<String, dynamic>? queryParameters;
-  final bool requestWithOutToken;
+  final Map<String, dynamic>? headers;
   bool isFormData;
   final ProgressCallback? onSendProgress;
   final ProgressCallback? onReceiveProgress;
@@ -17,9 +17,9 @@ class NetworkRequest<GenericModel> {
     required this.path,
     this.body,
     this.queryParameters,
-    this.requestWithOutToken = false,
     this.isFormData = false,
     this.onSendProgress,
+    this.headers,
     this.onReceiveProgress,
   });
   NetworkRequest copyWith({
@@ -27,6 +27,7 @@ class NetworkRequest<GenericModel> {
     RequestMethod? method,
     Map<String, dynamic>? body,
     Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? headers,
     bool? requestWithOutToken,
     bool? isFormData,
     ProgressCallback? onSendProgress,
@@ -36,8 +37,8 @@ class NetworkRequest<GenericModel> {
       path: path ?? this.path,
       method: method ?? this.method,
       body: body ?? this.body,
+      headers: headers ?? this.headers,
       queryParameters: queryParameters ?? this.queryParameters,
-      requestWithOutToken: requestWithOutToken ?? this.requestWithOutToken,
       isFormData: isFormData ?? this.isFormData,
       onSendProgress: onSendProgress ?? this.onSendProgress,
       onReceiveProgress: onReceiveProgress ?? this.onReceiveProgress,
