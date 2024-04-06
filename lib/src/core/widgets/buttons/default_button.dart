@@ -70,13 +70,15 @@ class DefaultButton extends StatelessWidget {
             elevation: elevation ?? ConstantManager.zeroAsDouble,
           ),
           child: customChild ??
-              Text(
-                title ?? 'Click!',
-                style: TextStyle(
-                  color: textColor ?? Colors.white,
-                  fontSize: fontSize ?? FontSize.s16,
-                  fontFamily: fontFamily,
-                  fontWeight: fontWeight ?? FontWeight.w500,
+              FittedBox(
+                child: Text(
+                  title ?? 'Click!',
+                  style: TextStyle(
+                    color: textColor ?? Colors.white,
+                    fontSize: fontSize ?? FontSize.s16,
+                    fontFamily: fontFamily,
+                    fontWeight: fontWeight ?? FontWeight.w500,
+                  ),
                 ),
               ),
         ),
