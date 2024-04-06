@@ -20,6 +20,7 @@ class DefaultButton extends StatelessWidget {
   final String? fontFamily;
   final FontWeight? fontWeight;
   final Widget? customChild;
+  final bool isFitted;
 
   const DefaultButton({
     super.key,
@@ -38,7 +39,18 @@ class DefaultButton extends StatelessWidget {
     this.fontWeight,
     this.elevation,
     this.customChild,
+    this.isFitted = true,
   });
+
+  Widget get _defaultChild => Text(
+        title ?? 'Click!',
+        style: TextStyle(
+          color: textColor ?? Colors.white,
+          fontSize: fontSize ?? FontSize.s16,
+          fontFamily: fontFamily,
+          fontWeight: fontWeight ?? FontWeight.w500,
+        ),
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -52,36 +64,27 @@ class DefaultButton extends StatelessWidget {
         width: width ?? MediaQuery.of(context).size.width,
         height: height ?? AppSize.sH60,
         child: ElevatedButton(
-          onPressed: onTap,
-          style: ElevatedButton.styleFrom(
-            splashFactory: InkRipple.splashFactory,
-            surfaceTintColor: color ?? ColorManager.primaryColor,
-            foregroundColor: color ?? ColorManager.primaryColor,
-            backgroundColor: color ?? ColorManager.primaryColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: borderRadius ?? BorderRadius.circular(AppSize.sH10),
-              side: borderColor != null
-                  ? BorderSide(
-                      color: borderColor ?? ColorManager.primaryColor,
-                      width: 1,
-                    )
-                  : BorderSide.none,
-            ),
-            elevation: elevation ?? ConstantManager.zeroAsDouble,
-          ),
-          child: customChild ??
-              FittedBox(
-                child: Text(
-                  title ?? 'Click!',
-                  style: TextStyle(
-                    color: textColor ?? Colors.white,
-                    fontSize: fontSize ?? FontSize.s16,
-                    fontFamily: fontFamily,
-                    fontWeight: fontWeight ?? FontWeight.w500,
-                  ),
-                ),
+            onPressed: onTap,
+            style: ElevatedButton.styleFrom(
+              splashFactory: InkRipple.splashFactory,
+              surfaceTintColor: color ?? ColorManager.primaryColor,
+              foregroundColor: color ?? ColorManager.primaryColor,
+              backgroundColor: color ?? ColorManager.primaryColor,
+              shape: RoundedRectangleBorder(
+                borderRadius:
+                    borderRadius ?? BorderRadius.circular(AppSize.sH10),
+                side: borderColor != null
+                    ? BorderSide(
+                        color: borderColor ?? ColorManager.primaryColor,
+                        width: 1,
+                      )
+                    : BorderSide.none,
               ),
-        ),
+              elevation: elevation ?? ConstantManager.zeroAsDouble,
+            ),
+            child: isFitted
+                ? FittedBox(child: customChild ?? _defaultChild)
+                : customChild ?? _defaultChild),
       ),
     );
   }
