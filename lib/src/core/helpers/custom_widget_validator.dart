@@ -7,7 +7,7 @@ class CustomWidgetValidator<T> extends StatelessWidget {
   final FormFieldValidator<T> validator;
   final Widget child;
   final Widget Function(FormFieldState<T>? value) builder;
-  final InputDecoration? decoration;
+  final InputDecorator? decoration;
   const CustomWidgetValidator(
       {super.key,
       this.initialValue,
