@@ -57,9 +57,6 @@ dependencies:
   sliver_tools: ^0.2.12
   svg_flutter: ^0.0.1
   google_fonts: ^6.2.1
-  clean_arch_generator:
-   git:
-     url: https://github.com/ahmedsaleh210/clean_arch_generator.git
 
 dev_dependencies:
   flutter_lints: ^2.0.3
