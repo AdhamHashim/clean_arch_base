@@ -15,7 +15,6 @@
   "errorExeption_NotContain": "There is no content",
   "errorExeption_notContainDesc": "Sorry, there is no content available to display",
   "visitorText": "This feature cannot be used, please register",
-  "check_internet": "Please check internet",
   "expetion": "We are sorry that an error occurred, please review the application administration",
   "contact_us": "Contact us",
   "cancele":"Dismiss",
@@ -29,5 +28,13 @@
   "--------------------------------------- Add App Strings Here -------------------------------------------":"",
 
   "name": "Name",
-  "continueAsA": "Continue as a"
+  "continueAsA": "Continue as a",
+  "email": "Email",
+  "sign_in": "Sign In",
+  "welcome": "Welcome",
+  "register": "register",
+  "please_enter_the_code_sent_to": "please enter the code sent to",
+  "short_key": "THe asdmpaksmdklasm",
+  "short_key2": "THe asdmpaksmdklasm"
+
 }
