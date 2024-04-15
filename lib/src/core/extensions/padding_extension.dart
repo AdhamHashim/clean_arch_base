@@ -70,4 +70,38 @@ extension PaddingExtension on Widget {
       child: this,
     );
   }
+
+  Widget paddingOnly({
+    double? left,
+    double? right,
+    double? top,
+    double? bottom,
+  }) {
+    return Padding(
+      padding: EdgeInsets.only(
+        left: left ?? 0.0,
+        right: right ?? 0.0,
+        top: top ?? 0.0,
+        bottom: bottom ?? 0.0,
+      ),
+      child: this,
+    );
+  }
+
+  Widget paddingOnlyDirectional({
+    double? start,
+    double? end,
+    double? top,
+    double? bottom,
+  }) {
+    return Padding(
+      padding: EdgeInsetsDirectional.only(
+        start: start ?? 0.0,
+        end: end ?? 0.0,
+        top: top ?? 0.0,
+        bottom: bottom ?? 0.0,
+      ),
+      child: this,
+    );
+  }
 }
