@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base/src/config/res/color_manager.dart';
-import 'package:flutter_base/src/config/res/constans_manager.dart';
+import 'package:flutter_base/src/config/res/constants_manager.dart';
 import 'package:flutter_base/src/core/shared/base_state.dart';
 import 'package:flutter_base/src/core/widgets/custom_loading.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

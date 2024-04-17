@@ -1,4 +1,4 @@
-import 'package:flutter_base/src/config/res/constans_manager.dart';
+import 'package:flutter_base/src/config/res/constants_manager.dart';
 import 'package:multiple_result/multiple_result.dart';
  import '../../domain/imports/domain_imports.dart';
 import 'package:flutter_base/src/core/error/failure.dart';

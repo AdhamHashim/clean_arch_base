@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_base/src/config/res/constans_manager.dart';
+import 'package:flutter_base/src/config/res/constants_manager.dart';
 import 'package:flutter_base/src/core/network/extensions.dart';
 
 import '../../config/language/languages.dart';

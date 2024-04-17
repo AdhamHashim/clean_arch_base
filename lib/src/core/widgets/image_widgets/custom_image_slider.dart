@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base/src/config/res/app_sizes.dart';
 import 'package:flutter_base/src/config/res/color_manager.dart';
-import 'package:flutter_base/src/config/res/constans_manager.dart';
+import 'package:flutter_base/src/config/res/constants_manager.dart';
 import 'package:flutter_base/src/core/extensions/context_extension.dart';
 import 'package:flutter_base/src/core/extensions/padding_extension.dart';
 import 'package:flutter_base/src/core/extensions/sized_box_helper.dart';

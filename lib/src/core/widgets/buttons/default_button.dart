@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base/src/config/res/constans_manager.dart';
+import 'package:flutter_base/src/config/res/constants_manager.dart';
 
 import '../../../config/res/app_sizes.dart';
 import '../../../config/res/color_manager.dart';

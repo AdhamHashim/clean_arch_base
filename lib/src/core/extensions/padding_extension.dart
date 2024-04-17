@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base/src/config/res/constans_manager.dart';
+import 'package:flutter_base/src/config/res/constants_manager.dart';
 
 extension PaddingExtension on Widget {
   Widget padding(EdgeInsetsGeometry padding) {
