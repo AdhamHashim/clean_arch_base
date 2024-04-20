@@ -1,4 +1,4 @@
-enum BaseState {
+enum BaseStatus {
   initial,
 
   loading,
