@@ -7,7 +7,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => HomeCubit(
-        ConstantManager.serviceLocator<FetchFeaturedBooksUseCase>(),
+        ConstantManager.serviceLocator<FetchPlayersUseCase>(),
       )..fetchPlayers(),
       child: const _HomeView(),
     );

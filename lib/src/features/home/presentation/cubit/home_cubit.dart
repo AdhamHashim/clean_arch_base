@@ -1,11 +1,11 @@
 part of '../imports/presentaion_imports.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit(this.homeFeaturedBooksUseCase) : super(HomeState.initial());
-  final FetchFeaturedBooksUseCase homeFeaturedBooksUseCase;
+  HomeCubit(this.fetchPlayersUseCase) : super(HomeState.initial());
+  final FetchPlayersUseCase fetchPlayersUseCase;
 
   void fetchPlayers([String? searchQuery]) async {
-    final result = await homeFeaturedBooksUseCase.call(searchQuery);
+    final result = await fetchPlayersUseCase.call(searchQuery);
     result.when(
       (players) => emit(
         state.copyWith(
