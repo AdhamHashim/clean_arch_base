@@ -1,8 +1,6 @@
 part of '../imports/domain_imports.dart';
 
-
-
-class PlayerEntity {
+class PlayerEntity extends Equatable {
   final int id;
   final String firstName;
   final int? heightFeet;
@@ -12,7 +10,7 @@ class PlayerEntity {
   final Team team;
   final int? weightPounds;
 
-  PlayerEntity({
+  const PlayerEntity({
     required this.id,
     required this.firstName,
     this.heightFeet,
@@ -22,4 +20,16 @@ class PlayerEntity {
     required this.team,
     this.weightPounds,
   });
+
+  @override
+  List<Object?> get props => [
+        id,
+        firstName,
+        heightFeet,
+        heightInches,
+        lastName,
+        position,
+        team,
+        weightPounds,
+      ];
 }

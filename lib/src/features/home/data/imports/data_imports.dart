@@ -10,5 +10,5 @@ import '../models/player_model.dart';
 
 
 part '../data_sources/home_remote_data_source.dart';
-part '../repositories/home_repo_impl.dart';
+part '../repositories/home_repository.dart';
 part '../di/home_di.dart';

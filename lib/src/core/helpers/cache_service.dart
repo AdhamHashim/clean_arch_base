@@ -25,6 +25,14 @@ class CacheStorage {
   static dynamic read(String key) {
     return _sharedPrefrences.get(key);
   }
+
+  static void delete(String key) {
+    _sharedPrefrences.remove(key);
+  }
+
+  static void deleteAll() {
+    _sharedPrefrences.clear();
+  }
 }
 
 class SecureStorage {

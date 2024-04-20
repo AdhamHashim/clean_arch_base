@@ -7,7 +7,6 @@ import "package:firebase_core/firebase_core.dart";
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-import '../shared/global_user_data.dart';
 
 Future<void> backgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
@@ -23,6 +22,8 @@ class NotificationService {
     'High Importance Notifications', // title
     importance: Importance.high,
   );
+
+  static String deviceToken = "";
 
   Future<bool> _requestPermissions() async {
     bool? result;
@@ -117,7 +118,7 @@ class NotificationService {
 
   Future<void> _saveFcmToken() async {
     final token = await FirebaseMessaging.instance.getToken();
-    GlobalUserData().deviceToken = token;
+    deviceToken = token ?? "";
     log("Firebase Fcm token : ${token.toString()}");
   }
 

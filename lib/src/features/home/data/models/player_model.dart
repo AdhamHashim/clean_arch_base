@@ -1,7 +1,7 @@
 import 'package:flutter_base/src/features/home/domain/imports/domain_imports.dart';
 
 class PlayerModel extends PlayerEntity {
-  PlayerModel({
+  const PlayerModel({
     required id,
     required firstName,
     required heightFeet,

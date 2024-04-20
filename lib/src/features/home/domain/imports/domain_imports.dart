@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter_base/src/core/error/failure.dart';
 import 'package:multiple_result/multiple_result.dart';
  import '../../../../core/standard/use_case.dart';
