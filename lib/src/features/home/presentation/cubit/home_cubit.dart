@@ -9,7 +9,7 @@ class HomeCubit extends Cubit<HomeState> {
     result.when(
       (players) => emit(
         state.copyWith(
-          baseState: BaseStatus.success,
+          baseStatus: BaseStatus.success,
           players: players,
         ),
       ),
