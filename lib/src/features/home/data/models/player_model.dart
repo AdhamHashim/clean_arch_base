@@ -1,5 +1,4 @@
-import 'package:flutter_base/src/features/home/domain/imports/domain_imports.dart';
-
+part of '../imports/data_imports.dart';
 class PlayerModel extends PlayerEntity {
   const PlayerModel({
     required id,
