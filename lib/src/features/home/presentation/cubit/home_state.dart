@@ -1,7 +1,7 @@
 part of '../imports/presentaion_imports.dart';
 
 final class HomeState extends Equatable {
-  final BaseState baseState;
+  final BaseStatus baseState;
   final List<PlayerEntity> players;
   final String errorMessage;
 
@@ -13,13 +13,13 @@ final class HomeState extends Equatable {
 
   factory HomeState.initial() {
     return const HomeState(
-      baseState: BaseState.initial,
+      baseState: BaseStatus.initial,
       players: [],
     );
   }
 
   HomeState copyWith({
-    BaseState? baseState,
+    BaseStatus? baseState,
     List<PlayerEntity>? players,
     String? errorMessage,
   }) {

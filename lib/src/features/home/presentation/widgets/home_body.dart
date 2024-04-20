@@ -8,11 +8,11 @@ class HomeBody extends StatelessWidget {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         return switch (state.baseState) {
-          BaseState.initial ||
-          BaseState.loading =>
+          BaseStatus.initial ||
+          BaseStatus.loading =>
             CustomLoading.showLoadingView(),
-          BaseState.error => Center(child: Text(state.errorMessage)),
-          BaseState.success => _PlayerList(players: state.players)
+          BaseStatus.error => Center(child: Text(state.errorMessage)),
+          BaseStatus.success => _PlayerList(players: state.players)
         };
       },
     );

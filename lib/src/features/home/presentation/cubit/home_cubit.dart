@@ -9,13 +9,13 @@ class HomeCubit extends Cubit<HomeState> {
     result.when(
       (players) => emit(
         state.copyWith(
-          baseState: BaseState.success,
+          baseState: BaseStatus.success,
           players: players,
         ),
       ),
       (error) => emit(
         state.copyWith(
-          baseState: BaseState.error,
+          baseState: BaseStatus.error,
           errorMessage: error.message,
         ),
       ),
