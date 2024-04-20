@@ -42,10 +42,12 @@ class DioService implements NetworkService {
     }
   }
 
+  
+  @override
   void addTokenToRequest(String token) {
     _dio.options.headers[HttpHeaders.authorizationHeader] = 'Bearer $token';
   }
-
+  @override
   void removeTokenFromRequest() {
     _dio.options.headers.remove(HttpHeaders.authorizationHeader);
   }

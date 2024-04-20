@@ -103,4 +103,7 @@ abstract class LocaleKeys {
   static const String _shortKey2 = 'short_key2';
   static String get shortKey2 => _shortKey2.tr();
 
+  static const String _home = 'home';
+  static String get home => _home.tr();
+
 }

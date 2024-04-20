@@ -5,4 +5,8 @@ abstract class NetworkService {
     NetworkRequest networkRequest, {
     Model Function(dynamic json)? mapper,
   });
+
+  void addTokenToRequest(String token);
+
+  void removeTokenFromRequest();
 }
