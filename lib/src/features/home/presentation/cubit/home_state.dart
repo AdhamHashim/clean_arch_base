@@ -1,30 +1,30 @@
 part of '../imports/presentaion_imports.dart';
 
 final class HomeState extends Equatable {
-  final BaseStatus baseState;
+  final BaseStatus baseStatus;
   final List<PlayerEntity> players;
   final String errorMessage;
 
   const HomeState({
-    required this.baseState,
+    required this.baseStatus,
     required this.players,
     this.errorMessage = ConstantManager.emptyText,
   });
 
   factory HomeState.initial() {
     return const HomeState(
-      baseState: BaseStatus.initial,
+      baseStatus: BaseStatus.initial,
       players: [],
     );
   }
 
   HomeState copyWith({
-    BaseStatus? baseState,
+    BaseStatus? baseStatus,
     List<PlayerEntity>? players,
     String? errorMessage,
   }) {
     return HomeState(
-      baseState: baseState ?? this.baseState,
+      baseStatus: baseStatus ?? this.baseStatus,
       players: players ?? this.players,
       errorMessage: errorMessage ?? this.errorMessage,
     );

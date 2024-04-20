@@ -7,7 +7,7 @@ class HomeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
-        return switch (state.baseState) {
+        return switch (state.baseStatus) {
           BaseStatus.initial ||
           BaseStatus.loading =>
             CustomLoading.showLoadingView(),

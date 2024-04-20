@@ -15,7 +15,7 @@ class HomeCubit extends Cubit<HomeState> {
       ),
       (error) => emit(
         state.copyWith(
-          baseState: BaseStatus.error,
+          baseStatus: BaseStatus.error,
           errorMessage: error.message,
         ),
       ),
