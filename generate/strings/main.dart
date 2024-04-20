@@ -126,7 +126,7 @@ Future<void> generateAppStrings(Map<String, dynamic> jsonMap) async {
   buffer
       .writeln('import \'package:easy_localization/easy_localization.dart\';');
   buffer.writeln();
-  buffer.writeln('abstract class Strings {');
+  buffer.writeln('abstract class LocaleKeys {');
   jsonMap.forEach((String key, _) {
     try {
       final Names keyNames = Names.fromString(key);

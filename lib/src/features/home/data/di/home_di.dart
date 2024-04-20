@@ -1,8 +1,8 @@
 part of '../imports/data_imports.dart';
 
 void setUpHomeDependencies() {
-  ConstantManager.serviceLocator.registerLazySingleton<FetchPlayersUseCase>(
-    () => FetchPlayersUseCase(
+  ConstantManager.serviceLocator.registerLazySingleton<GetBooksUseCase>(
+    () => GetBooksUseCase(
         homeRepo: ConstantManager.serviceLocator<HomeRepository>()),
   );
 

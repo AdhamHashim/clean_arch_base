@@ -2,7 +2,7 @@ part of '../imports/presentaion_imports.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit(this.fetchPlayersUseCase) : super(HomeState.initial());
-  final FetchPlayersUseCase fetchPlayersUseCase;
+  final GetBooksUseCase fetchPlayersUseCase;
 
   void fetchPlayers([String? searchQuery]) async {
     final result = await fetchPlayersUseCase.call(searchQuery);
