@@ -12,7 +12,7 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
       method: RequestMethod.get,
       queryParameters: {'search': searchQuery},
     );
-    return ConstantManager.serviceLocator<NetworkService>()
+    return await ConstantManager.serviceLocator<NetworkService>()
         .callApi(networkRequest, mapper: ((json) => (json as List)
             .map((e) => PlayerModel.fromJson(e as Map<String, dynamic>))
             .toList()));
