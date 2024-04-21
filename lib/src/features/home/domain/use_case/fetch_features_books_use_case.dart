@@ -1,6 +1,6 @@
 part of '../imports/domain_imports.dart';
 
-class GetBooksUseCase extends UseCase<List<PlayerEntity>, String> {
+class GetBooksUseCase implements UseCase<List<PlayerEntity>, String> {
   final HomeRepository homeRepo;
   GetBooksUseCase({required this.homeRepo});
 

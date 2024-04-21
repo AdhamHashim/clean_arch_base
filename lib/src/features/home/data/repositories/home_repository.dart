@@ -5,7 +5,7 @@ abstract class HomeRepository {
       [String? searchQuery]);
 }
 
-class HomeRepositoryImpl extends HomeRepository {
+class HomeRepositoryImpl implements HomeRepository {
   final HomeRemoteDataSource remoteDataSource;
 
   HomeRepositoryImpl({

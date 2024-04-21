@@ -4,7 +4,7 @@ abstract class HomeRemoteDataSource {
   Future<List<PlayerModel>> fetchPlayers([String? searchQuery]);
 }
 
-class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
+class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   @override
   Future<List<PlayerModel>> fetchPlayers([String? searchQuery]) async {
     final NetworkRequest networkRequest = NetworkRequest(
