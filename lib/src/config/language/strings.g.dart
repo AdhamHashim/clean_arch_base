@@ -106,4 +106,7 @@ abstract class LocaleKeys {
   static const String _home = 'home';
   static String get home => _home.tr();
 
+  static const String _product = 'product';
+  static String get product => _product.tr();
+
 }

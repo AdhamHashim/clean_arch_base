@@ -5,17 +5,21 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../config/res/color_manager.dart';
 import '../navigation/navigator.dart';
-import 'app_text.dart';
 
 class MessageUtils {
   static void showSnackBar(
     String message, {
     Color? backgroundColor,
+    Color? textColor,
     BuildContext? context,
   }) {
     final snackBar = SnackBar(
       duration: const Duration(seconds: ConstantManager.snackbarDuration),
-      content: AppText(message, color: ColorManager.whiteColor),
+      content: Text(
+        message,
+        style:
+            TextStyle(color: textColor ?? Colors.red, fontSize: FontSize.s14),
+      ),
       backgroundColor: backgroundColor ?? ColorManager.whiteColor,
       behavior: SnackBarBehavior.floating,
     );

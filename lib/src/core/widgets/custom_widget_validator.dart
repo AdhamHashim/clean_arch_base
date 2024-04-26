@@ -5,15 +5,15 @@ class CustomWidgetValidator<T> extends StatelessWidget {
   final T? initialValue;
   final String name;
   final FormFieldValidator<T> validator;
-  final Widget child;
-  final Widget Function(FormFieldState<T>? value) builder;
+  final Widget? child;
+  final Widget Function(FormFieldState<T> value) builder;
   final InputDecoration? decoration;
   const CustomWidgetValidator(
       {super.key,
       this.initialValue,
       required this.name,
       required this.validator,
-      required this.child,
+      this.child,
       this.decoration,
       required this.builder});
 
@@ -24,15 +24,7 @@ class CustomWidgetValidator<T> extends StatelessWidget {
       initialValue: initialValue,
       validator: validator,
       builder: (FormFieldState<T> field) {
-        return InputDecorator(
-          decoration: decoration ??
-              InputDecoration(
-                border: InputBorder.none,
-                errorText: field.errorText,
-                errorStyle: const TextStyle(color: Colors.red),
-              ),
-          child: builder(field),
-        );
+        return builder(field);
       },
     );
   }

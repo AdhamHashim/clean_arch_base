@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -8,30 +10,35 @@ class CacheStorage {
     _sharedPrefrences = await SharedPreferences.getInstance();
   }
 
-  static void write(String key, dynamic value) {
+  static Future<void> write(String key, dynamic value) async {
     if (value is String) {
-      _sharedPrefrences.setString(key, value);
+      await _sharedPrefrences.setString(key, value);
     } else if (value is int) {
-      _sharedPrefrences.setInt(key, value);
+      await _sharedPrefrences.setInt(key, value);
     } else if (value is double) {
-      _sharedPrefrences.setDouble(key, value);
+      await _sharedPrefrences.setDouble(key, value);
     } else if (value is bool) {
-      _sharedPrefrences.setBool(key, value);
+      await _sharedPrefrences.setBool(key, value);
     } else if (value is List<String>) {
-      _sharedPrefrences.setStringList(key, value);
+      await _sharedPrefrences.setStringList(key, value);
+    } else if (value is Map<String, dynamic>) {
+      await _sharedPrefrences.setString(key, jsonEncode(value));
     }
   }
 
-  static dynamic read(String key) {
+  static dynamic read(String key, {bool isDecoded = false}) {
+    if (isDecoded) {
+      return jsonDecode(_sharedPrefrences.getString(key) ?? "");
+    }
     return _sharedPrefrences.get(key);
   }
 
-  static void delete(String key) {
-    _sharedPrefrences.remove(key);
+  static Future<void> delete(String key) async {
+    await _sharedPrefrences.remove(key);
   }
 
-  static void deleteAll() {
-    _sharedPrefrences.clear();
+  static Future<void> deleteAll() async {
+    await _sharedPrefrences.clear();
   }
 }
 

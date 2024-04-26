@@ -86,11 +86,11 @@ class DioService implements NetworkService {
   dynamic _handleError(DioException error) {
     switch (error.type) {
       case DioExceptionType.connectionTimeout:
-        throw SocketException(LocaleKeys.checkInternet.tr());
+        throw NoInternetConnectionException(LocaleKeys.checkInternet.tr());
       case DioExceptionType.sendTimeout:
-        throw SocketException(LocaleKeys.checkInternet.tr());
+        throw NoInternetConnectionException(LocaleKeys.checkInternet.tr());
       case DioExceptionType.receiveTimeout:
-        throw SocketException(LocaleKeys.checkInternet.tr());
+        throw NoInternetConnectionException(LocaleKeys.checkInternet.tr());
       case DioExceptionType.badResponse:
         switch (error.response!.statusCode) {
           case StatusCode.badRequest:
