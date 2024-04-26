@@ -26,9 +26,17 @@ class CacheStorage {
     }
   }
 
+  static String? _tryDecode(String key) {
+    try {
+      return jsonDecode(_sharedPrefrences.getString(key) ?? "");
+    } catch (e) {
+      return null;
+    }
+  }
+
   static dynamic read(String key, {bool isDecoded = false}) {
     if (isDecoded) {
-      return jsonDecode(_sharedPrefrences.getString(key) ?? "");
+      return _tryDecode(key);
     }
     return _sharedPrefrences.get(key);
   }
