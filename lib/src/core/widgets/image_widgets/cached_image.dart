@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base/src/config/res/app_sizes.dart';
@@ -42,10 +44,18 @@ class CachedImage extends StatelessWidget {
       imageUrl: url,
       width: width,
       height: height,
-      memCacheHeight: (height ?? AppSize.sH40 * devicePixelRatio).round(),
-      memCacheWidth: (width ?? AppSize.sW40 * devicePixelRatio).round(),
-      maxHeightDiskCache: (height ?? AppSize.sH40 * devicePixelRatio).round(),
-      maxWidthDiskCache: (width ?? AppSize.sW40 * devicePixelRatio).round(),
+      memCacheHeight: height != null
+          ? min((height! * devicePixelRatio).toInt(), 2048)
+          : (40 * devicePixelRatio).round(),
+      memCacheWidth: height != null
+          ? min((width! * devicePixelRatio).toInt(), 2048)
+          : (40 * devicePixelRatio).round(),
+      maxHeightDiskCache: height != null
+          ? min((height! * devicePixelRatio).toInt(), 2048)
+          : (40 * d  OevicePixelRatio).round(),
+      maxWidthDiskCache: height != null
+          ? min((width! * devicePixelRatio).toInt(), 2048)
+          : (40 * devicePixelRatio).round(),
       imageBuilder: (context, imageProvider) => Container(
         width: width,
         height: height,

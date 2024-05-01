@@ -23,23 +23,27 @@ void logDebug(String message, {Level level = Level.info}) {
       String logMessage;
       switch (level) {
         case Level.debug:
-          logMessage = '$cyanColor[DEBUG][$timeString] $message$resetColor';
+          logMessage =
+              '$cyanColor[DEBUG][$timeString] ${message.split('\n').map((e) => '$cyanColor$e').join('\n')}.$resetColor';
           break;
         case Level.info:
-          logMessage = '$greenColor[INFO][$timeString] $message$resetColor';
+          logMessage =
+              '$greenColor[INFO][$timeString] ${message.split('\n').map((e) => '$greenColor$e').join('\n')}.$resetColor';
           break;
         case Level.warning:
           logMessage =
-              '$yellowColor[WARNING][$timeString] $message $resetColor';
+              '$yellowColor[WARNING][$timeString] ${message.split('\n').map((e) => '$yellowColor$e').join('\n')}.$resetColor';
           break;
         case Level.error:
-          logMessage = '$redColor[ERROR][$timeString] $message $resetColor';
+          logMessage =
+              '$redColor[ERROR][$timeString] ${message.split('\n').map((e) => '$redColor$e').join('\n')}.$resetColor';
           break;
         case Level.alien:
-          logMessage = '$redColor[ALIEN][$timeString] $message $resetColor';
+          logMessage =
+              '$redColor[ALIEN][$timeString] ${message.split('\n').map((e) => '$redColor$e').join('\n')}.$resetColor';
           break;
       }
-      debugPrint(logMessage);
+      debugPrint(logMessage, wrapWidth: 150000);
     } catch (e) {
       print(e.toString());
     }
@@ -62,17 +66,22 @@ class LoggerInterceptor extends Interceptor {
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    final requestPath = '${options.baseUrl}${options.path}';
+    final requestPath =
+        '${options.baseUrl}${options.path}${options.queryParameters.isEmpty ? '' : '?${options.queryParameters.entries.map((e) => '${e.key}=${e.value}').join('&')}'}';
 
     // Log request details
     logDebug(
         '\n\n\n\n.........................................................................');
     logDebug('onRequest: ${options.method} request => $requestPath',
         level: Level.info);
-    logDebug('onRequest: Request Headers => ${options.headers}',
+    logDebug(
+        'onRequest: Request Headers => ${options.headers.entries.map((e) => '${e.key}: ${e.value}').join('\n')}',
         level: Level.info);
-    logDebug('onRequest: Request Data => ${_prettyJsonEncode(options.data)}',
-        level: Level.info); // Log formatted request data
+    if (options.data != null) {
+      logDebug('onRequest: Request Data => ${_prettyJsonEncode(options.data)}',
+          level: Level.info);
+    }
+    // Log formatted request data
 
     // Call the super class to continue handling the request
     return super.onRequest(options, handler);
@@ -80,6 +89,9 @@ class LoggerInterceptor extends Interceptor {
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
+    logDebug(
+        'onResponse: ${response.requestOptions.method} request => ${response.requestOptions.baseUrl}${response.requestOptions.path}',
+        level: Level.debug);
     logDebug(
         'onResponse: StatusCode: ${response.statusCode}, Data: ${_prettyJsonEncode(response.data)}',
         level: Level.debug);
