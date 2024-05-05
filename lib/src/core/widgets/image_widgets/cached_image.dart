@@ -47,13 +47,13 @@ class CachedImage extends StatelessWidget {
       memCacheHeight: height != null
           ? min((height! * devicePixelRatio).toInt(), 2048)
           : (40 * devicePixelRatio).round(),
-      memCacheWidth: height != null
+      memCacheWidth: width != null
           ? min((width! * devicePixelRatio).toInt(), 2048)
           : (40 * devicePixelRatio).round(),
       maxHeightDiskCache: height != null
           ? min((height! * devicePixelRatio).toInt(), 2048)
-          : (40 * d  OevicePixelRatio).round(),
-      maxWidthDiskCache: height != null
+          : (40 * devicePixelRatio).round(),
+      maxWidthDiskCache: width != null
           ? min((width! * devicePixelRatio).toInt(), 2048)
           : (40 * devicePixelRatio).round(),
       imageBuilder: (context, imageProvider) => Container(
