@@ -96,7 +96,8 @@ class LoggerInterceptor extends Interceptor {
         'onResponse: StatusCode: ${response.statusCode}, Data: ${_prettyJsonEncode(response.data)}',
         level: Level.debug);
     logDebug(
-        '.........................................................................\n\n\n\n');
+        '.........................................................................\n\n\n\n',
+        level: Level.debug);
 
     return super.onResponse(response, handler);
   }
