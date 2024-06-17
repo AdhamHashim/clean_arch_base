@@ -163,15 +163,15 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppCircular.r10),
-          borderSide: const BorderSide(color: ColorManager.borderColor),
+          borderSide: const BorderSide(color: ColorManager.primaryColor),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppCircular.r10),
-          borderSide: const BorderSide(color: ColorManager.borderColor),
+          borderSide: const BorderSide(color: Colors.red),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppCircular.r10),
-          borderSide: const BorderSide(color: ColorManager.borderColor),
+          borderSide: const BorderSide(color: Colors.red),
         ),
       ),
     );
