@@ -32,25 +32,29 @@ void main() async {
 }
 
 void handleFileChange(File file, String previousContent) async {
-  final String currentContent = file.readAsStringSync();
-  final List<String> currentLines = currentContent.split('\n');
-  final List<String> previousLines = previousContent.split('\n');
+  try {
+    final String currentContent = file.readAsStringSync();
+    final List<String> currentLines = currentContent.split('\n');
+    final List<String> previousLines = previousContent.split('\n');
 
-  for (int i = 0; i < currentLines.length; i++) {
-    if (i >= previousLines.length || currentLines[i] != previousLines[i]) {
-      print('Line ${i + 1} changed');
-      print(
-          'Previous: ${(i) >= previousLines.length ? 'null' : previousLines[i]}');
-      print('Current: ${currentLines[i]}');
-      print('------------------------------------------------------');
+    for (int i = 0; i < currentLines.length; i++) {
+      if (i >= previousLines.length || currentLines[i] != previousLines[i]) {
+        print('Line ${i + 1} changed');
+        print(
+            'Previous: ${(i) >= previousLines.length ? 'null' : previousLines[i]}');
+        print('Current: ${currentLines[i]}');
+        print('------------------------------------------------------');
+      }
     }
+    previousContent = currentContent;
+    final Map<String, dynamic> jsonMap = json.decode(currentContent);
+    final Map<String, dynamic> jsonEnMap =
+        await generateJsonTranslate(lang: 'en', jsonMap: jsonMap);
+    await generateJsonTranslate(lang: 'ar', jsonMap: jsonMap);
+    await generateAppStrings(jsonEnMap);
+  } catch (e) {
+    print('Uknown Key');
   }
-  previousContent = currentContent;
-  final Map<String, dynamic> jsonMap = json.decode(currentContent);
-  final Map<String, dynamic> jsonEnMap =
-      await generateJsonTranslate(lang: 'en', jsonMap: jsonMap);
-  await generateJsonTranslate(lang: 'ar', jsonMap: jsonMap);
-  await generateAppStrings(jsonEnMap);
 }
 
 Future<Map<String, dynamic>> generateJsonTranslate({
@@ -64,29 +68,30 @@ Future<Map<String, dynamic>> generateJsonTranslate({
           ? GenerateConstants.langArJsonAssetFilePath
           : '';
   File file = File(filePath);
-  String content = file.readAsStringSync().trim();
-  final Map<String, dynamic> fileMap = json.decode(content);
-  List<String> lines = content.split('\n');
-  List<String> linesWithoutLastCurlBrace = lines.sublist(0, lines.length - 1);
-  buffer.writeAll(linesWithoutLastCurlBrace, '\n');
-  String bufferStringTrim = buffer.toString().trim();
-  bufferStringTrim = '$bufferStringTrim,';
-  buffer.clear();
-  buffer.writeln(bufferStringTrim);
+  buffer.writeln('{');
+  // String content = file.readAsStringSync().trim();
+  // final Map<String, dynamic> fileMap = json.decode(content);
+  // List<String> lines = content.split('\n');
+  // List<String> linesWithoutLastCurlBrace = lines.sublist(0, lines.length - 1);
+  // buffer.writeAll(linesWithoutLastCurlBrace, '\n');
+  // String bufferStringTrim = buffer.toString().trim();
+  // bufferStringTrim = '$bufferStringTrim,';
+  // buffer.clear();
+  // buffer.writeln(bufferStringTrim);
   int counter = 0;
   //print('fileMap ${fileMap.toString()}');
   jsonMap.forEach((String key, dynamic value) {
     //print('$lang($counter)  "$key": "$value"');
     try {
       final Names keyNames = Names.fromString(key);
-      if (!fileMap.containsKey(keyNames.snakeCase)) {
+      // if (!fileMap.containsKey(keyNames.snakeCase)) {
         //print('$lang($counter)  !containsKey "${keyNames.snakeCase}" ');
         lang == 'en'
             ? buffer.write('  "${keyNames.snakeCase}": "${keyNames.original}"')
             : buffer.write('  "${keyNames.snakeCase}": "$value"');
         if (counter < jsonMap.length - 1) {
           buffer.write(',');
-        }
+        // }
         buffer.writeln();
       }
     } on NamesException {
