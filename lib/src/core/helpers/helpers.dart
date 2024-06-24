@@ -1,6 +1,6 @@
 import 'dart:developer';
 import 'dart:io';
-import 'package:easy_localization/easy_localization.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_base/src/config/res/app_sizes.dart';
 import 'package:flutter_base/src/core/extensions/padding_extension.dart';
@@ -9,7 +9,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../config/language/locale_keys.g.dart';
+import '../../config/language/strings.g.dart';
 import '../navigation/navigator.dart';
 
 class Helpers {
@@ -45,7 +45,7 @@ class Helpers {
               children: <Widget>[
                 ListTile(
                   leading: const Icon(Icons.photo_library),
-                  title: Text(LocaleKeys.PhotoLibrary.tr()),
+                  title: Text(LocaleKeys.photoLibrary),
                   onTap: () async {
                     final currentImage =
                         await picker.pickImage(source: ImageSource.gallery);
@@ -57,7 +57,7 @@ class Helpers {
                 ),
                 ListTile(
                   leading: const Icon(Icons.photo_camera),
-                  title: Text(LocaleKeys.Camera.tr()),
+                  title: Text(LocaleKeys.camera),
                   onTap: () async {
                     final currentImage =
                         await picker.pickImage(source: ImageSource.camera);
@@ -100,7 +100,7 @@ class LauncherHelper {
     if (await canLaunchUrl(Uri.parse(whatsAppUrl))) {
       await launchUrl(Uri.parse(whatsAppUrl));
     } else {
-      throw LocaleKeys.error.tr();
+      throw LocaleKeys.exceptionError;
     }
   }
 

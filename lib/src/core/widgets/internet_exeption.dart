@@ -1,10 +1,10 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base/src/config/language/strings.g.dart';
 import 'package:flutter_base/src/config/res/app_assets.dart';
 import 'package:flutter_base/src/config/res/color_manager.dart';
 import 'package:flutter_base/src/core/extensions/context_extension.dart';
 import 'package:lottie/lottie.dart';
-import '../../config/language/locale_keys.g.dart';
+
 import '../../config/res/app_sizes.dart';
 
 class InternetExpetion extends StatelessWidget {
@@ -26,14 +26,14 @@ class InternetExpetion extends StatelessWidget {
             ),
             SizedBox(height: AppSize.sH10),
             Text(
-              LocaleKeys.errorExeptionNoconnection.tr(),
+              LocaleKeys.errorExeptionNoconnection,
               style: context.textTheme.titleLarge!.copyWith(
                 color: ColorManager.secondryColor,
               ),
             ),
             SizedBox(height: AppSize.sH10),
             Text(
-              LocaleKeys.errorExeption_NointernetDesc.tr(),
+              LocaleKeys.errorexeptionNointernetdesc,
               style: context.textTheme.titleLarge!.copyWith(),
               textAlign: TextAlign.center,
             ),

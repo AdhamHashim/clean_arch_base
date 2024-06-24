@@ -1,10 +1,10 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base/src/config/language/strings.g.dart';
 import 'package:flutter_base/src/config/res/app_assets.dart';
 import 'package:lottie/lottie.dart';
-import '../../config/language/locale_keys.g.dart';
+
 import '../../config/res/app_sizes.dart';
- 
+
 class NotContainData extends StatelessWidget {
   const NotContainData({super.key});
 
@@ -20,9 +20,9 @@ class NotContainData extends StatelessWidget {
           height: MediaQuery.of(context).size.height * .3,
         ),
         SizedBox(height: AppSize.sH10),
-        Text(LocaleKeys.errorExeptionNoconnection.tr()),
+        Text(LocaleKeys.errorExeptionNoconnection),
         SizedBox(height: AppSize.sH10),
-        Text(LocaleKeys.errorExeption_notContainDesc.tr()),
+        Text(LocaleKeys.errorexceptionNotcontaindesc),
       ],
     );
   }

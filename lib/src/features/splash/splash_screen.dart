@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base/src/config/res/app_assets.dart';
-import 'package:flutter_base/src/config/res/constants_manager.dart';
-import 'package:flutter_base/src/core/notification/notification_service.dart';
 import 'package:flutter_base/src/features/home/presentation/imports/presentaion_imports.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:svg_flutter/svg.dart';

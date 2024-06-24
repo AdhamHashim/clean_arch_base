@@ -1,11 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
-
-import '../../config/language/locale_keys.g.dart';
+import 'package:flutter_base/src/config/language/strings.g.dart';
 
 class Validators {
   static String? validateEmpty(String? value, {String? message}) {
     if (value == null || value.isEmpty) {
-      return message ?? LocaleKeys.fillField.tr();
+      return message ?? LocaleKeys.fillField;
     }
     return null;
   }
