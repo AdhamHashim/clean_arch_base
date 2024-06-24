@@ -70,7 +70,11 @@
 ![Logo](assets/images/appIcon.png)
 
 
-## EASY_LOCALIZATION_GENERATOR:
-flutter pub run easy_localization:generate -O lib/src//config/language -f keys -o locale_keys.g.dart --source-dir ./assets/translations
+## Localization Generator:
+### Run this Command to generate localization files
+```bash
+dart run generate/strings/main.dart
+```
+
 
 
