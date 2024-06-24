@@ -24,21 +24,21 @@ abstract class NotificationNavigation {
   void navigate({required Map<String, dynamic> data});
 }
 
-class HomeNavigation extends NotificationNavigation {
+class HomeNavigation implements NotificationNavigation {
   @override
   void navigate({required Map<String, dynamic> data}) {
     // Navigate to message screen with logic
   }
 }
 
-class MessageNavigation extends NotificationNavigation {
+class MessageNavigation implements NotificationNavigation {
   @override
   void navigate({required Map<String, dynamic> data}) {
     // Navigate to message screen with logic
   }
 }
 
-class UpdateNavigation extends NotificationNavigation {
+class UpdateNavigation implements NotificationNavigation {
   @override
   void navigate({required Map<String, dynamic> data}) {
     // Navigate to update screen
