@@ -20,7 +20,7 @@ class NotificationNavigationFactory {
   }
 }
 
-abstract class NotificationNavigation {
+abstract interface class NotificationNavigation {
   void navigate({required Map<String, dynamic> data});
 }
 
