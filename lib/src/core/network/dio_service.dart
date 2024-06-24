@@ -7,7 +7,6 @@ import 'package:flutter_base/src/core/network/extensions.dart';
 
 import '../../config/language/languages.dart';
 import '../../config/language/strings.g.dart';
-import '../../config/res/status_code.dart';
 import '../error/exceptions.dart';
 import 'log_interceptor.dart';
 import 'network_request.dart';
@@ -92,21 +91,21 @@ class DioService implements NetworkService {
         throw NoInternetConnectionException(LocaleKeys.checkInternet);
       case DioExceptionType.badResponse:
         switch (error.response!.statusCode) {
-          case StatusCode.badRequest:
+          case HttpStatus.badRequest:
             throw BadRequestException(
               error.response?.data['message'] ?? LocaleKeys.badRequest,
             );
-          case StatusCode.unauthorized:
+          case HttpStatus.unauthorized:
             throw UnauthorizedException(
               error.response?.data['message'] ?? LocaleKeys.unauthorized,
             );
-          case StatusCode.notFound:
+          case HttpStatus.notFound:
             throw NotFoundException(LocaleKeys.notFound);
-          case StatusCode.conflict:
+          case HttpStatus.conflict:
             throw ConflictException(
               error.response?.data['message'] ?? LocaleKeys.serverError,
             );
-          case StatusCode.internalServerError:
+          case HttpStatus.internalServerError:
             throw InternalServerErrorException(
               error.response?.data['message'] ?? LocaleKeys.serverError,
             );
