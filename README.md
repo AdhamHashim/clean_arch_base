@@ -11,7 +11,7 @@
 1. USER
 
 
-**FLUTTER_VERSION** : 3.19.2
+**FLUTTER_VERSION** : 3.22.0
 
 ## Links for development :
 
