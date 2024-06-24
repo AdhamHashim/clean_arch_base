@@ -10,17 +10,4 @@ enum NotificationType {
 
   final int id;
   const NotificationType(this.id);
-
-  static Map<int, NotificationType> _map = {
-    none.id: none,
-    message.id: message,
-    update.id: update,
-    warning.id: warning,
-    error.id: error,
-    success.id: success,
-  };
-
-  static NotificationType getNavigation(int id) {
-    return _map[id] ?? none;
-  }
 }
