@@ -1,59 +1,46 @@
+part of 'notification_service.dart';
+
 class NotificationRoutes {
   static void navigateByType(Map<String, dynamic> data) {
-    final NotificationType type = NotificationType.fromId(data['id']);
-    switch (type) {
-      case NotificationType.message:
-        // Go.to(NotificationScreen(data: data));
-        break;
-      case NotificationType.update:
-        // Go.to(NotificationScreen(data: data));
-        break;
-      case NotificationType.warning:
-        // Go.to(NotificationScreen(data: data));
-        break;
-      case NotificationType.error:
-        // Go.to(NotificationScreen(data: data));
-        break;
-      case NotificationType.success:
-        // Go.to(NotificationScreen(data: data));
-        break;
-      case NotificationType.infop:
-        // Go.to(NotificationScreen(data: data));
-        break;
-      default:
-        break;
-    }
+    final int id = data['id'];
+    final navigation = NotificationNavigationFactory.getNavigation(id);
+    navigation.navigate(data: data);
   }
 }
 
-enum NotificationType {
-  none(0),
-  message(1),
-  update(2),
-  warning(3),
-  error(4),
-  success(5),
-  infop(6);
+class NotificationNavigationFactory {
+  static final Map<int, NotificationNavigation> _navigations = {
+    NotificationType.message.id: MessageNavigation(),
+    NotificationType.update.id: UpdateNavigation(),
+    // Add other mappings...
+  };
 
-  final int id;
-  const NotificationType(this.id);
+  static NotificationNavigation getNavigation(int id) {
+    return _navigations[id] ?? HomeNavigation();
+  }
+}
 
-  static NotificationType fromId(int id) {
-    switch (id) {
-      case 1:
-        return NotificationType.message;
-      case 2:
-        return NotificationType.update;
-      case 3:
-        return NotificationType.warning;
-      case 4:
-        return NotificationType.error;
-      case 5:
-        return NotificationType.success;
-      case 6:
-        return NotificationType.infop;
-      default:
-        return NotificationType.none;
-    }
+abstract class NotificationNavigation {
+  void navigate({required Map<String, dynamic> data});
+}
+
+class HomeNavigation extends NotificationNavigation {
+  @override
+  void navigate({required Map<String, dynamic> data}) {
+    // Navigate to message screen with logic
+  }
+}
+
+class MessageNavigation extends NotificationNavigation {
+  @override
+  void navigate({required Map<String, dynamic> data}) {
+    // Navigate to message screen with logic
+  }
+}
+
+class UpdateNavigation extends NotificationNavigation {
+  @override
+  void navigate({required Map<String, dynamic> data}) {
+    // Navigate to update screen
   }
 }
