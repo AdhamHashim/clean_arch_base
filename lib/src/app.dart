@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base/src/config/res/app_sizes.dart';
 import 'package:flutter_base/src/config/res/constants_manager.dart';
 import 'package:flutter_base/src/core/widgets/offline_widget.dart';
+import 'package:flutter_base/src/features/splash/splash_screen.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'config/themes/app_theme.dart';
-import 'core/navigation/named_routes.dart';
 import 'core/navigation/navigator.dart';
 import 'core/navigation/route_generator.dart';
 import 'core/shared/route_observer.dart';
@@ -30,7 +30,7 @@ class App extends StatelessWidget {
           locale: context.locale,
           navigatorKey: Go.navigatorKey,
           onGenerateRoute: RouterGenerator.getRoute,
-          initialRoute: NamedRoutes.splash.routeName,
+          home: const SplashScreen(),
           navigatorObservers: [AppNavigationObserver()],
           theme: AppTheme.light,
           builder: (context, child) {

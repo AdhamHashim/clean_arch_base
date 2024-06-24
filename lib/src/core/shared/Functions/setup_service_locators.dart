@@ -1,4 +1,4 @@
-import 'package:flutter_base/src/core/helpers/notification_service.dart';
+import 'package:flutter_base/src/core/notification/notification_service.dart';
 import 'package:flutter_base/src/core/network/dio_service.dart';
 import 'package:flutter_base/src/core/network/network_service.dart';
 
@@ -15,7 +15,7 @@ void setUpGeneralDependencies() {
     () => DioService(),
   );
 
-  ConstantManager.serviceLocator.registerLazySingleton<NotificationService>(
+  ConstantManager.serviceLocator.registerFactory<NotificationService>(
     () => NotificationService(),
   );
 }

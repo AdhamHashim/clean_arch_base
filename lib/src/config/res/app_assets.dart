@@ -1,9 +1,9 @@
-class SVGManager {
+class SvgManager {
   static const String _svgPath = 'assets/svg/';
-  static const String splashLogo = '${_svgPath}splash_logo.svg';
+  static const String splashLogo = '${_svgPath}logo.svg';
 }
 
-class AssetsManager {
+class ImagesManager {
   static const String _imgPath = 'assets/images/';
   static const String backgroundAppbar = '${_imgPath}background_appbar.png';
 }

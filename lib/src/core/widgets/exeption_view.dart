@@ -9,7 +9,7 @@ import '../../config/res/color_manager.dart';
 import 'buttons/default_button.dart';
 
 class ExceptionView extends StatelessWidget {
-  const ExceptionView({Key? key}) : super(key: key);
+  const ExceptionView({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -18,23 +18,23 @@ class ServerException extends Equatable implements Exception {
 }
 
 class FetchDataException extends ServerException {
-  const FetchDataException([message]) : super(message);
+  const FetchDataException(super.message);
 }
 
 class BadRequestException extends ServerException {
-  const BadRequestException([message]) : super(message);
+  const BadRequestException(super.message);
 }
 
 class UnauthorizedException extends ServerException {
-  const UnauthorizedException([message]) : super(message);
+  const UnauthorizedException(super.message);
 }
 
 class NotFoundException extends ServerException {
-  const NotFoundException([message]) : super(message);
+  const NotFoundException(super.message);
 }
 
 class ConflictException extends ServerException {
-  const ConflictException([message]) : super(message);
+  const ConflictException(super.message);
 }
 
 class InternalServerErrorException extends ServerException {

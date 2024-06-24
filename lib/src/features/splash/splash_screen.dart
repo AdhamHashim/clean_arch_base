@@ -1,10 +1,12 @@
-import 'package:flutter_base/src/config/res/app_assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base/src/config/res/app_assets.dart';
+import 'package:flutter_base/src/config/res/constants_manager.dart';
+import 'package:flutter_base/src/core/notification/notification_service.dart';
+import 'package:flutter_base/src/features/home/presentation/imports/presentaion_imports.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:svg_flutter/svg.dart';
 
 import '../../core/navigation/navigator.dart';
-
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,10 +18,24 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 2), () {
-      Go.offAll(const Scaffold());
-    });
+    _initApp();
     super.initState();
+  }
+
+  void _initApp() async {
+    // NotificationNavigator(
+    //   onRoutingMessage: (message) {
+    //     NotificationRoutes.navigateByType(message.data);
+    //   },
+    //   onNoInitialMessage: () {
+    //     Go.offAll(const HomeScreen()); // TODO Default Route when no notification
+    //   },
+    // ); // TODO add notification navigator
+    // await ConstantManager.serviceLocator<NotificationService>()
+    //     .setupNotifications(); //TODO add notification service
+    Future.delayed(const Duration(seconds: 3), () {
+      Go.offAll(const HomeScreen());
+    });
   }
 
   @override
@@ -30,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
       width: 1.sw,
       child: Center(
         child: SvgPicture.asset(
-          SVGManager.splashLogo,
+          SvgManager.splashLogo,
           height: 0.3.sh,
           width: 0.3.sw,
         ),

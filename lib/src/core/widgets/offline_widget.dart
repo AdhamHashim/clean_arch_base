@@ -4,7 +4,7 @@ import 'package:flutter_offline/flutter_offline.dart';
 
 class OfflineWidget extends StatefulWidget {
   final Widget child;
-  const OfflineWidget({Key? key, required this.child}) : super(key: key);
+  const OfflineWidget({super.key, required this.child});
 
   @override
   State<OfflineWidget> createState() => _OfflineWidgetState();

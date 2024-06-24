@@ -1,24 +1,16 @@
 part of '../imports/data_imports.dart';
+
 class PlayerModel extends PlayerEntity {
   const PlayerModel({
-    required id,
-    required firstName,
-    required heightFeet,
-    required heightInches,
-    required lastName,
-    required position,
-    required team,
-    required weightPounds,
-  }) : super(
-          id: id,
-          firstName: firstName,
-          heightFeet: heightFeet,
-          heightInches: heightInches,
-          lastName: lastName,
-          position: position,
-          team: team,
-          weightPounds: weightPounds,
-        );
+    required super.id,
+    required super.firstName,
+    required super.heightFeet,
+    required super.heightInches,
+    required super.lastName,
+    required super.position,
+    required super.team,
+    required super.weightPounds,
+  });
 
   factory PlayerModel.fromJson(Map<String, dynamic> json) => PlayerModel(
         id: json["id"],
