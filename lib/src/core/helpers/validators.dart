@@ -1,5 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter_base/src/config/language/strings.g.dart';
+import 'package:flutter_base/src/config/language/locale_keys.g.dart';
 
 class Validators {
   static String? validateEmpty(String? value, {String? message}) {

@@ -33,5 +33,6 @@
     "unauthorized #$ Unauthorized" : "غير مصرح",
     "notFound #$ Not Found" : "غير موجود",
     "name #$ Name" : "الاسم",
-    "continueAsA #$ Continue as a" : "المتابعة ك"
+    "continueAsA #$ Continue as a" : "المتابعة ك",
+    "visitor #$ Visitor" : "زائر"
 }

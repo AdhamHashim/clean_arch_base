@@ -6,7 +6,7 @@ import 'package:flutter_base/src/config/res/constants_manager.dart';
 import 'package:flutter_base/src/core/network/extensions.dart';
 
 import '../../config/language/languages.dart';
-import '../../config/language/strings.g.dart';
+import '../../config/language/locale_keys.g.dart';
 import '../error/exceptions.dart';
 import 'log_interceptor.dart';
 import 'network_request.dart';

@@ -106,4 +106,7 @@ abstract class LocaleKeys {
   static const String _continueAsA = 'continue_as_a';
   static String get continueAsA => _continueAsA.tr();
 
+  static const String _visitor = 'visitor';
+  static String get visitor => _visitor.tr();
+
 }

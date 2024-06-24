@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base/src/config/language/strings.g.dart';
+import 'package:flutter_base/src/config/language/locale_keys.g.dart';
 import 'package:flutter_base/src/config/res/app_assets.dart';
 import 'package:lottie/lottie.dart';
 

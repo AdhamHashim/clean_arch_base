@@ -9,7 +9,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../config/language/strings.g.dart';
+import '../../config/language/locale_keys.g.dart';
 import '../navigation/navigator.dart';
 
 class Helpers {

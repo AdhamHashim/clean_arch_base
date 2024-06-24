@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter_base/src/config/language/strings.g.dart';
+import 'package:flutter_base/src/config/language/locale_keys.g.dart';
 
 class ServerException extends Equatable implements Exception {
   final String message;
