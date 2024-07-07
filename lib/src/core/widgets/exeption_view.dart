@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base/src/config/language/locale_keys.g.dart';
-import 'package:flutter_base/src/config/res/app_assets.dart';
+import 'package:flutter_base/src/config/res/assets.gen.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../config/res/app_sizes.dart';
@@ -18,7 +18,7 @@ class ExceptionView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Lottie.asset(
-            LottieManager.error,
+            AppAssets.lottie.error,
             width: MediaQuery.of(context).size.width * .7,
             height: MediaQuery.of(context).size.height * .3,
           ),

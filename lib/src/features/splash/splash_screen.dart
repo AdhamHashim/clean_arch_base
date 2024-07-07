@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base/src/config/res/app_assets.dart';
+import 'package:flutter_base/src/config/res/assets.gen.dart';
 import 'package:flutter_base/src/features/home/presentation/imports/presentaion_imports.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:svg_flutter/svg.dart';
@@ -44,7 +44,7 @@ class _SplashScreenState extends State<SplashScreen> {
       width: 1.sw,
       child: Center(
         child: SvgPicture.asset(
-          SvgManager.splashLogo,
+          AppAssets.svg.logo,
           height: 0.3.sh,
           width: 0.3.sw,
         ),

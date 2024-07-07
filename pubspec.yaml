@@ -59,6 +59,8 @@ dependencies:
 
 dev_dependencies:
   flutter_lints: ^4.0.0
+  build_runner:
+  flutter_gen_runner:
   flutter_test:
     sdk: flutter
 
@@ -72,3 +74,12 @@ flutter:
     - assets/fonts/
     - assets/lottie/
     - assets/translations/
+
+
+flutter_gen:
+  output: lib/src/config/res/
+  line_length: 80
+  assets:
+    enabled: true
+    outputs:
+      class_name: AppAssets

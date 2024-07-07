@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base/src/core/widgets/internet_exeption.dart';
 import 'package:flutter_offline/flutter_offline.dart';
+
+import 'internet_exeption.dart';
 
 class OfflineWidget extends StatefulWidget {
   final Widget child;
@@ -21,14 +22,20 @@ class _OfflineWidgetState extends State<OfflineWidget> {
         ConnectivityResult connectivity,
         Widget item,
       ) {
-        final bool connected = connectivity == ConnectivityResult.none;
-        if (connected) {
-          return const InternetExpetion();
-        } else {
-          return widget.child;
-        }
+        final bool connected = connectivity != ConnectivityResult.none;
+        return Stack(
+          fit: StackFit.expand,
+          children: [
+            item,
+            if (!connected) const InternetExpetion(),
+          ],
+        );
       },
-      child: const SizedBox.shrink(),
+      builder: (BuildContext context) {
+        return widget.child;
+      },
+      errorBuilder: (BuildContext context) => const InternetExpetion(),
+      // child: const SizedBox.shrink(),
     );
   }
 }

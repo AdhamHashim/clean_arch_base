@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base/src/config/language/locale_keys.g.dart';
-import 'package:flutter_base/src/config/res/app_assets.dart';
+import 'package:flutter_base/src/config/res/assets.gen.dart';
 import 'package:flutter_base/src/config/res/color_manager.dart';
 import 'package:flutter_base/src/core/extensions/context_extension.dart';
 import 'package:lottie/lottie.dart';
@@ -20,7 +20,7 @@ class InternetExpetion extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Lottie.asset(
-              LottieManager.noInternet,
+              AppAssets.lottie.noInternet,
               width: MediaQuery.of(context).size.width * .7,
               height: MediaQuery.of(context).size.height * .3,
             ),
