@@ -28,13 +28,7 @@ class DioService implements NetworkService {
       ..options.receiveTimeout = const Duration(
         seconds: ConstantManager.recieveTimeoutDuration,
       )
-      ..options.responseType = ResponseType.json
-      ..options.headers = {
-        HttpHeaders.acceptHeader: ContentType.json,
-        'lang': Languages.currentLanguage?.locale.languageCode ??
-            Languages.english.languageCode,
-      };
-
+      ..options.responseType = ResponseType.json;
     if (kDebugMode) {
       _dio.interceptors.add(LoggerInterceptor());
     }
@@ -50,10 +44,20 @@ class DioService implements NetworkService {
     _dio.options.headers.remove(HttpHeaders.authorizationHeader);
   }
 
+  void _setLangAndContentType() {
+    _dio.options.headers = {
+      HttpHeaders.acceptHeader: ContentType.json,
+      HttpHeaders.acceptLanguageHeader:
+          Languages.currentLanguage?.locale.languageCode ??
+              Languages.english.languageCode,
+    };
+  }
+
   @override
   Future<Model> callApi<Model>(NetworkRequest networkRequest,
       {Model Function(dynamic json)? mapper}) async {
     try {
+      _setLangAndContentType();
       await networkRequest.prepareRequestData();
       final response = await _dio.request(networkRequest.path,
           data: networkRequest.hasBodyAndProgress()
@@ -68,9 +72,12 @@ class DioService implements NetworkService {
           onReceiveProgress: networkRequest.hasBodyAndProgress()
               ? networkRequest.onReceiveProgress
               : null,
-          options: Options(
-              method: networkRequest.asString(),
-              headers: networkRequest.headers));
+          options: Options(method: networkRequest.asString(), headers: {
+            HttpHeaders.acceptLanguageHeader:
+                Languages.currentLanguage?.locale.languageCode ??
+                    Languages.english.languageCode,
+            ...networkRequest.headers ?? <String, dynamic>{},
+          }));
       if (mapper != null) {
         return mapper(response.data);
       } else {
