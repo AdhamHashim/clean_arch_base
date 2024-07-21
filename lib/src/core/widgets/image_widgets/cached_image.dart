@@ -46,16 +46,14 @@ class CachedImage extends StatelessWidget {
       height: height,
       memCacheHeight: height != null
           ? min((height! * devicePixelRatio).toInt(), 2048)
-          : (40 * devicePixelRatio).round(),
-      memCacheWidth: width != null
-          ? min((width! * devicePixelRatio).toInt(), 2048)
-          : (40 * devicePixelRatio).round(),
+          : null,
+      memCacheWidth:
+          width != null ? min((width! * devicePixelRatio).toInt(), 2048) : null,
       maxHeightDiskCache: height != null
           ? min((height! * devicePixelRatio).toInt(), 2048)
-          : (40 * devicePixelRatio).round(),
-      maxWidthDiskCache: width != null
-          ? min((width! * devicePixelRatio).toInt(), 2048)
-          : (40 * devicePixelRatio).round(),
+          : null,
+      maxWidthDiskCache:
+          width != null ? min((width! * devicePixelRatio).toInt(), 2048) : null,
       imageBuilder: (context, imageProvider) => Container(
         width: width,
         height: height,
@@ -87,10 +85,10 @@ class CachedImage extends StatelessWidget {
           border:
               Border.all(color: borderColor ?? Colors.transparent, width: 1),
           shape: boxShape ?? BoxShape.rectangle,
-          color: bgColor ?? ColorManager.primaryColor.withOpacity(.5),
+          color: bgColor ?? AppColors.primaryColor.withOpacity(.5),
         ),
         child: SpinKitFadingCircle(
-          color: ColorManager.primaryColor,
+          color: AppColors.primaryColor,
           size: AppSize.sH30,
         ),
       ),
@@ -99,7 +97,7 @@ class CachedImage extends StatelessWidget {
         height: height,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: bgColor ?? ColorManager.primaryColor.withOpacity(.5),
+          color: bgColor ?? AppColors.primaryColor.withOpacity(.5),
           borderRadius: haveRadius
               ? borderRadius ?? BorderRadius.circular(AppCircular.r2)
               : null,

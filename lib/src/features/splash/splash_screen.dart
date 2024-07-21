@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base/src/config/res/assets.gen.dart';
 import 'package:flutter_base/src/features/home/presentation/imports/presentaion_imports.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:svg_flutter/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../core/navigation/navigator.dart';
 

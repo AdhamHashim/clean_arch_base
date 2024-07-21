@@ -31,7 +31,7 @@ class ExceptionView extends StatelessWidget {
           DefaultButton(
             width: MediaQuery.of(context).size.width * .45,
             title: LocaleKeys.contactUs,
-            textColor: ColorManager.buttonTextColor,
+            textColor: AppColors.buttonTextColor,
             fontSize: FontSize.s12,
             onTap: () {},
           ),

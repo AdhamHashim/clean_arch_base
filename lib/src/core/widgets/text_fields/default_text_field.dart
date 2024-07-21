@@ -118,7 +118,7 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
       autocorrect: false,
       autofocus: widget.autoFocus,
       focusNode: widget.autoFocus == true ? widget.focusNode : null,
-      cursorColor: ColorManager.primaryColor,
+      cursorColor: AppColors.primaryColor,
       decoration: InputDecoration(
         isDense: true,
         contentPadding: widget.contentPadding,
@@ -126,7 +126,7 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
         filled: widget.filled,
         suffixText: widget.suffixText,
         prefixIcon: widget.isPassword == true
-            ? const Icon(Icons.lock_outline, color: ColorManager.hintTextColor)
+            ? const Icon(Icons.lock_outline, color: AppColors.hintTextColor)
             : widget.prefixIcon,
         suffixIcon: widget.isPassword == true
             ? IconButton(
@@ -139,7 +139,7 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
                   _isSecure
                       ? Icons.visibility_off_outlined
                       : Icons.visibility_outlined,
-                  color: ColorManager.hintTextColor,
+                  color: AppColors.hintTextColor,
                 ),
               )
             : widget.suffixIcon,
@@ -148,22 +148,22 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
         hintText: widget.title,
         label: isLabel ? Text(widget.label!) : null,
         labelStyle:
-            isLabel ? const TextStyle(color: ColorManager.primaryColor) : null,
+            isLabel ? const TextStyle(color: AppColors.primaryColor) : null,
         hintStyle: const TextStyle(
-          color: ColorManager.primaryColor,
+          color: AppColors.primaryColor,
           fontWeight: FontWeight.w300,
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppCircular.r10),
           borderSide: widget.hasBorderColor == true
               ? BorderSide(
-                  color: widget.borderColor ?? ColorManager.borderColor,
+                  color: widget.borderColor ?? AppColors.borderColor,
                 )
               : BorderSide.none,
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppCircular.r10),
-          borderSide: const BorderSide(color: ColorManager.primaryColor),
+          borderSide: const BorderSide(color: AppColors.primaryColor),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppCircular.r10),

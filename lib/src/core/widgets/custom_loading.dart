@@ -5,12 +5,11 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../../config/res/color_manager.dart';
 
-
 class CustomLoading {
   static showLoadingView() {
     return Center(
       child: SpinKitDoubleBounce(
-        color: ColorManager.primaryColor,
+        color: AppColors.primaryColor,
         size: AppSize.sH40,
       ),
     );
@@ -22,7 +21,7 @@ class CustomLoading {
       indicator: SizedBox(
         height: AppSize.sH60,
         width: AppSize.sW60,
-        child: const SpinKitFadingCircle(color: ColorManager.primaryColor),
+        child: const SpinKitFadingCircle(color: AppColors.primaryColor),
       ),
       dismissOnTap: false,
       status: "Loading..",

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../config/language/languages.dart';
-import '../navigation/navigator.dart';
 import '../../config/res/color_manager.dart';
+import '../navigation/navigator.dart';
 
 Future<DateTime?> showCustomDatePicker(
     {required TextEditingController controller, String? dateFormat}) async {
@@ -19,12 +19,13 @@ Future<DateTime?> showCustomDatePicker(
       return Theme(
         data: Theme.of(context).copyWith(
           colorScheme: const ColorScheme.light(
-              primary: ColorManager.primaryColor, // <-- SEE HERE
-              onPrimary: ColorManager.whiteColor, // <-- SEE HERE
-              onSurface: ColorManager.primaryColor,),
+            primary: AppColors.primaryColor, // <-- SEE HERE
+            onPrimary: AppColors.whiteColor, // <-- SEE HERE
+            onSurface: AppColors.primaryColor,
+          ),
           textButtonTheme: TextButtonThemeData(
             style: TextButton.styleFrom(
-              foregroundColor: ColorManager.primaryColor, // button text color
+              foregroundColor: AppColors.primaryColor, // button text color
             ),
           ),
         ),

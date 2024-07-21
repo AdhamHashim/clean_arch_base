@@ -165,7 +165,7 @@ class CustomButtonState extends State<CustomButtonAnimation>
               elevation: widget.elevation,
               padding: widget.padding,
               disabledBackgroundColor:
-                  widget.disabledColor ?? ColorManager.blackColor,
+                  widget.disabledColor ?? AppColors.blackColor,
               shape: RoundedRectangleBorder(
                 side: widget.borderSide,
                 borderRadius: BorderRadius.circular(widget.roundLoadingShape

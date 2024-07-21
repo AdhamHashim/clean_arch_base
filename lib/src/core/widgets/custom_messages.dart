@@ -20,7 +20,7 @@ class MessageUtils {
         style:
             TextStyle(color: textColor ?? Colors.red, fontSize: FontSize.s14),
       ),
-      backgroundColor: backgroundColor ?? ColorManager.whiteColor,
+      backgroundColor: backgroundColor ?? AppColors.whiteColor,
       behavior: SnackBarBehavior.floating,
     );
     ScaffoldMessenger.of(context ?? Go.navigatorKey.currentContext!)
@@ -36,8 +36,8 @@ class MessageUtils {
       msg: msg,
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.BOTTOM,
-      backgroundColor: color ?? ColorManager.primaryColor,
-      textColor: textColor ?? ColorManager.whiteColor,
+      backgroundColor: color ?? AppColors.primaryColor,
+      textColor: textColor ?? AppColors.whiteColor,
       fontSize: FontSize.s16,
     );
   }

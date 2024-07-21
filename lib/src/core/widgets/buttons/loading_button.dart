@@ -51,11 +51,11 @@ class LoadingButton extends StatelessWidget {
         width: width ?? MediaQuery.of(context).size.width,
         minWidth: AppSize.sW50,
         height: height ?? AppSize.sH50,
-        color: color ?? ColorManager.primaryColor,
+        color: color ?? AppColors.primaryColor,
         borderRadius: borderRadius ?? AppSize.sH10,
-        disabledColor: color ?? ColorManager.primaryColor,
+        disabledColor: color ?? AppColors.primaryColor,
         borderSide: borderColor != null
-            ? const BorderSide(color: ColorManager.primaryColor, width: 1)
+            ? const BorderSide(color: AppColors.primaryColor, width: 1)
             : BorderSide.none,
         loader: Container(
           padding: EdgeInsets.all(AppPadding.pH10),
@@ -75,4 +75,3 @@ class LoadingButton extends StatelessWidget {
     );
   }
 }
-

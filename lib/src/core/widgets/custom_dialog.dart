@@ -22,7 +22,7 @@ void showCustomDialog(BuildContext context,
           margin: EdgeInsets.symmetric(horizontal: AppPadding.pH20),
           padding: padding ?? EdgeInsets.all(AppPadding.pH20),
           decoration: BoxDecoration(
-            color: color ?? ColorManager.whiteColor,
+            color: color ?? AppColors.whiteColor,
             borderRadius: borderRadius ?? BorderRadius.circular(AppSize.sH25),
           ),
           child: child,

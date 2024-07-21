@@ -77,7 +77,7 @@ class _ImageSliderState extends State<ImageSlider> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(AppCircular.r5),
                     color: isActive
-                        ? widget.activeColor ?? ColorManager.primaryColor
+                        ? widget.activeColor ?? AppColors.primaryColor
                         : widget.inActiveColor ?? Colors.grey,
                   ),
                 );

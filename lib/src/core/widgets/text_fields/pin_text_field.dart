@@ -25,10 +25,10 @@ class CustomPinTextField extends StatelessWidget {
       ),
     );
     final focusedPinTheme = defaultPinTheme.copyDecorationWith(
-      border: Border.all(color: ColorManager.primaryColor),
+      border: Border.all(color: AppColors.primaryColor),
     );
     final errorPinTheme = defaultPinTheme.copyDecorationWith(
-      border: Border.all(color: ColorManager.errorColor),
+      border: Border.all(color: AppColors.errorColor),
     );
     return Pinput(
       length: ConstantManager.pinCodeFieldsCount,

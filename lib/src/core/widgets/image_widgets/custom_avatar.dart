@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base/src/config/res/app_sizes.dart';
 import 'package:flutter_base/src/config/res/color_manager.dart';
-import 'package:svg_flutter/svg_flutter.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomAvatar extends StatelessWidget {
   final String icon;
@@ -28,7 +28,7 @@ class CustomAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: color ?? ColorManager.scaffoldBackground,
+        color: color ?? AppColors.scaffoldBackground,
         borderRadius: BorderRadius.circular(radius ?? AppCircular.r8),
       ),
       child: Padding(

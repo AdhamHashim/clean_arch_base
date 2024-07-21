@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base/src/config/res/app_sizes.dart';
-import '../../navigation/navigator.dart';
+
 import '../../../config/res/color_manager.dart';
+import '../../navigation/navigator.dart';
 
 class ButtonClose extends StatelessWidget {
   final VoidCallback? onTap;
@@ -21,7 +22,7 @@ class ButtonClose extends StatelessWidget {
         child: Center(
           child: Icon(
             Icons.close,
-            color: ColorManager.blackColor,
+            color: AppColors.blackColor,
             size: AppSize.sH25,
           ),
         ),

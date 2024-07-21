@@ -28,7 +28,7 @@ class InternetExpetion extends StatelessWidget {
             Text(
               LocaleKeys.errorExeptionNoconnection,
               style: context.textTheme.titleLarge!.copyWith(
-                color: ColorManager.secondryColor,
+                color: AppColors.secondryColor,
               ),
             ),
             SizedBox(height: AppSize.sH10),
